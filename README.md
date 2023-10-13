@@ -16,7 +16,8 @@
 
 <a name="visao-geral"></a>
 
-Adopt.me é um sistema local desenvolvido para controlar a adoção de animais. As principais funcionalidades são:
+Adopt.me é um sistema local desenvolvido para controlar a adoção de animais. 
+As principais funcionalidades são:
 
 <ul>
   <li>Listagem de animais</li>
@@ -27,7 +28,7 @@ Adopt.me é um sistema local desenvolvido para controlar a adoção de animais. 
 
 ### Tipos de Usuários
 
-O sistema prevê para o sistema, os seguintes usuários: Animais e Tutores.
+O sistema prevê para o sistema, os seguintes usuários: <b>Animais e Tutores</b>.
 
 
 ## Tecnologias Utilizadas
