@@ -1,7 +1,7 @@
 # Projeto_Adopt.me
 
 <p align="center">
-  <img src="https://github.com/renanripee/Projeto_Adopt.me/assets/102258510/36cff716-1294-45fb-9a4a-fbf4af8582ba" alt="Adopt Me" width="535" height="150">
+  <img src="https://github.com/renanripee/Projeto_Adopt.me/assets/102258510/36cff716-1294-45fb-9a4a-fbf4af8582ba" alt="Adopt Me" width="428" height="120">
 </p>
 
 <p align="center"> Projeto Final da disciplina de Engenharia de Software - Universidade Federal de Lavras </p>
@@ -25,7 +25,7 @@ Adopt.me é um sistema local desenvolvido para controlar a adoção de animais. 
   <li>Atribuir tutor a um animal, após adoção</li>
 </ul>
 
-# Tipos de Usuários
+### Tipos de Usuários
 
 O sistema prevê para o sistema, os seguintes usuários: Animais e Tutores.
 
