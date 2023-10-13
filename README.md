@@ -28,7 +28,7 @@ As principais funcionalidades são:
 
 ### Tipos de Usuários
 
-O sistema prevê para o sistema, os seguintes usuários: <b>Animais e Tutores</b>.
+O sistema prevê o <b>Administrador</b> como único usuário.
 
 
 ## Tecnologias Utilizadas
