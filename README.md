@@ -1,7 +1,7 @@
 # Projeto_Adopt.me
 
 <p align="center">
-  <img src="https://github.com/renanripee/Projeto_Adopt.me/assets/102258510/36cff716-1294-45fb-9a4a-fbf4af8582ba" alt="Adopt Me" width="428" height="120">
+  <img src="https://github.com/renanripee/Projeto_Adopt.me/assets/102258510/36cff716-1294-45fb-9a4a-fbf4af8582ba" alt="Adopt Me" width="321" height="90">
 </p>
 
 <p align="center"> Projeto Final da disciplina de Engenharia de Software - Universidade Federal de Lavras </p>
@@ -23,7 +23,7 @@ As principais funcionalidades são:
   <li>Listagem de animais</li>
   <li>Controle sobre as informações dos animais (adicionar, excluir, alterar)</li>
   <li>Listagem de Tutores</li>
-  <li>Atribuir tutor a um animal, após adoção</li>
+  <li>Registrar adoção</li>
 </ul>
 
 ### Tipos de Usuários
