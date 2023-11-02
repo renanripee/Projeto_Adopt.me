@@ -22,8 +22,11 @@ As principais funcionalidades são:
 <ul>
   <li>Listagem de animais</li>
   <li>Controle sobre as informações dos animais (adicionar, excluir, alterar)</li>
-  <li>Listagem de Tutores</li>
-  <li>Registrar adoção</li>
+  <li>Listagem de tutores</li>
+  <li>Controle sobre as informações dos tutores (adicionar, excluir, alterar)</li>
+  <li>Listagem de adoções</li>
+  <li>Controle sobre as informações das adoções (adicionar, excluir, alterar)</li>
+  <li>Login do Administrador</li>
 </ul>
 
 ### Tipos de Usuários
@@ -35,11 +38,9 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 
 <a name="tecnologias"></a>
 
-(versões ainda a serem decididas)
-
-- React
-- Spring Boot
-- Postgres or MySQL
+- React - v18.2.0
+- Spring Boot - v3.1.5
+- PostgreSQL - v16
 
 
 ## Estrutura de Diretório
