@@ -25,4 +25,19 @@ public class Endereco {
         this.numero = dados.numero();
     }
 
+    public void editarDados(DadosEndereco dados) {
+        if(dados.cep() != null){
+            this.cep = dados.cep();
+        }
+        if(dados.rua() != null){
+            this.rua = dados.rua();
+        }
+        if(dados.bairro() != null){
+            this.bairro = dados.bairro();
+        }
+        if(dados.numero() != null){
+            this.numero = dados.numero();
+        }
+    }
+
 }
