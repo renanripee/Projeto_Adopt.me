@@ -3,7 +3,9 @@ package adopt.me.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,6 +46,12 @@ public class TutorController {
     public void editar(@RequestBody @Valid DadosEdicaoTutor dados){
         var tutor = repository.getReferenceById(dados.id());
         tutor.editarDados(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable int id){
+        repository.deleteById(id);
     }
 
 }
