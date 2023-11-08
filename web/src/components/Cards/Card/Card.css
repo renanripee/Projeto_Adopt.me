@@ -1,0 +1,83 @@
+.card-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+  height: 42vh;
+  border: 3px solid #005975;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+  cursor: pointer;
+}
+
+.card-image img {
+  width: 20vw;
+  height: 42vh;
+  object-fit: cover;
+  position: absolute;
+}
+
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.hover-card-image {
+  opacity: 0.95;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  margin-left: -0.5vh;
+  width: 20.5vw;
+  height: 43.2vh;
+  overflow: hidden;
+}
+
+.hover-image img {
+  object-fit: cover;
+  position: relative;
+}
+
+.card-discription {
+  position: absolute;
+  align-content: flex-end;
+  bottom: 0px;
+  width: 20vw;
+  height: 15vh;
+  z-index: 1;
+}
+
+.card-discription-background {
+  position: absolute;
+  align-content: flex-end;
+  bottom: 0px;
+  width: 20vw;
+  height: 15vh;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.card-text {
+  width: 100%;
+  position: relative;
+  font-size: medium;
+  padding-left: 1vw;
+  padding-bottom: 1vh;
+}
+
+.card-animal-name {
+  color: white;
+  margin-top: 1vh;
+  margin-bottom: 0;
+  font-weight: 700;
+  font-size: 3rem;
+}
+.card-animal-type {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}

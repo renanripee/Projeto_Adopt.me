@@ -1,0 +1,34 @@
+.table-content {
+  margin: 0 10vw;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  border: none;
+  text-align: center;
+  padding: 8px;
+  background-color: #005975;
+  color: white;
+}
+
+.first-th {
+  border-radius: 0.9375rem 0rem 0rem 0rem;
+}
+
+.last-th {
+  border-radius: 0rem 0.9375rem 0rem 0rem;
+}
+
+td {
+  text-align: center;
+  background-color: #f3f3f3;
+  text-align: left;
+  padding: 8px;
+}
