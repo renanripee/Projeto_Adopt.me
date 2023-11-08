@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import adopt.me.api.controller.tutor.DadosCadastroTutor;
 import adopt.me.api.controller.tutor.Tutor;
 import adopt.me.api.controller.tutor.TutorRepository;
+import jakarta.transaction.Transactional;
 
 @RestController
 @RequestMapping("tutores")
@@ -21,6 +22,7 @@ public class TutorController {
 
     // @RequestBody é responsável por receber os dados .json enviados ao chamar o caminho "/tutores"
     @PostMapping
+    @Transactional
     public void cadastrar(@RequestBody DadosCadastroTutor dados){
         // realiza o insert no banco de dados
         repository.save(new Tutor(dados));
