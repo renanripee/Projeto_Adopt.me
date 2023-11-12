@@ -44,4 +44,9 @@ public class UploadImagemService {
             throw new Exception("Erro ao salvar a imagem.", e);
         }
     }
+
+    public void excluirImagem(String nomeFoto) throws IOException {
+        Path caminhoArquivo = Paths.get(caminho).resolve(Paths.get("imagens")).resolve(nomeFoto).normalize();
+        Files.deleteIfExists(caminhoArquivo);
+    }
 }
