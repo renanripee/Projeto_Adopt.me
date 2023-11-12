@@ -13,7 +13,7 @@ public record DadosCadastroAnimal(
     String tipo,
     
     @NotBlank
-    String raca, 
+    String raca,
     
     String descricao){
 }
