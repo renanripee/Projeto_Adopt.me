@@ -1,4 +1,4 @@
-package adopt.me.api.controller.tutor;
+package adopt.me.api.domain.tutor;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

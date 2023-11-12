@@ -1,6 +1,6 @@
-package adopt.me.api.controller.tutor;
+package adopt.me.api.domain.tutor;
 
-import adopt.me.api.controller.endereco.Endereco;
+import adopt.me.api.domain.endereco.Endereco;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

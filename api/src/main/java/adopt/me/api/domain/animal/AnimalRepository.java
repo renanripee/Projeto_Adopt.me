@@ -1,4 +1,4 @@
-package adopt.me.api.controller.animal;
+package adopt.me.api.domain.animal;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
