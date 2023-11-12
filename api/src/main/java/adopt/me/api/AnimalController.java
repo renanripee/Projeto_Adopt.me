@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,8 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 import adopt.me.api.controller.animal.Animal;
 import adopt.me.api.controller.animal.AnimalRepository;
 import adopt.me.api.controller.animal.DadosCadastroAnimal;
+import adopt.me.api.controller.animal.DadosEdicaoAnimal;
 import adopt.me.api.service.UploadImagemService;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("animais")
@@ -36,6 +40,13 @@ public class AnimalController {
     @GetMapping
     public List<Animal> listar(){
         return repository.findAll();
+    }
+
+    @PutMapping
+    @Transactional
+    public void editar(@RequestBody @Valid DadosEdicaoAnimal dados){
+        var animal = repository.getReferenceById(dados.id());
+        animal.editarDados(dados);
     }
 
 }
