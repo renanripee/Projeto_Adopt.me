@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -39,6 +40,24 @@ public class Animal {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public void editarDados(@Valid DadosEdicaoAnimal dados) {
+        
+        this.idade = dados.idade();
+        
+        if(dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if(dados.tipo() != null){
+            this.tipo = dados.tipo();
+        }
+        if(dados.raca() != null){
+            this.raca = dados.raca();
+        }
+        if(dados.descricao() != null){
+            this.descricao = dados.descricao();
+        }
     }
 
 }
