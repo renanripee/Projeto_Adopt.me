@@ -1,6 +1,9 @@
 package adopt.me.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -28,6 +31,11 @@ public class AnimalController {
         Animal animal = new Animal(dados);
         animal.setFoto(service.salvarImagem(imagem));
         repository.save(animal);
+    }
+
+    @GetMapping
+    public List<Animal> listar(){
+        return repository.findAll();
     }
 
 }
