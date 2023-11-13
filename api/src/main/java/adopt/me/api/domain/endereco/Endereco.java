@@ -1,4 +1,4 @@
-package adopt.me.api.controller.endereco;
+package adopt.me.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

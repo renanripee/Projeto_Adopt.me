@@ -1,4 +1,4 @@
-package adopt.me.api;
+package adopt.me.api.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import adopt.me.api.controller.animal.Animal;
-import adopt.me.api.controller.animal.AnimalRepository;
-import adopt.me.api.controller.animal.DadosCadastroAnimal;
-import adopt.me.api.controller.animal.DadosEdicaoAnimal;
-import adopt.me.api.service.UploadImagemService;
+import adopt.me.api.domain.animal.Animal;
+import adopt.me.api.domain.animal.AnimalRepository;
+import adopt.me.api.domain.animal.DadosCadastroAnimal;
+import adopt.me.api.domain.animal.DadosEdicaoAnimal;
+import adopt.me.api.infra.file.UploadImagemService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 

@@ -1,4 +1,4 @@
-package adopt.me.api.service;
+package adopt.me.api.infra.file;
 
 import java.io.IOException;
 import java.io.InputStream;

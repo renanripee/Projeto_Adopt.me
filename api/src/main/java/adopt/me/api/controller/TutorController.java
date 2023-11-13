@@ -1,4 +1,4 @@
-package adopt.me.api;
+package adopt.me.api.controller;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import adopt.me.api.controller.tutor.DadosCadastroTutor;
-import adopt.me.api.controller.tutor.DadosEdicaoTutor;
-import adopt.me.api.controller.tutor.Tutor;
-import adopt.me.api.controller.tutor.TutorRepository;
+import adopt.me.api.domain.tutor.DadosCadastroTutor;
+import adopt.me.api.domain.tutor.DadosEdicaoTutor;
+import adopt.me.api.domain.tutor.Tutor;
+import adopt.me.api.domain.tutor.TutorRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 

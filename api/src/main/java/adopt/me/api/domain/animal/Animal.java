@@ -1,4 +1,4 @@
-package adopt.me.api.controller.animal;
+package adopt.me.api.domain.animal;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

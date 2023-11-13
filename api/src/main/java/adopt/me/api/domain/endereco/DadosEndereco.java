@@ -1,4 +1,4 @@
-package adopt.me.api.controller.endereco;
+package adopt.me.api.domain.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

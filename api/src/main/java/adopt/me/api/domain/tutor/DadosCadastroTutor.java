@@ -1,6 +1,6 @@
-package adopt.me.api.controller.tutor;
+package adopt.me.api.domain.tutor;
 
-import adopt.me.api.controller.endereco.DadosEndereco;
+import adopt.me.api.domain.endereco.DadosEndereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
