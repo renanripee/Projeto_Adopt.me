@@ -19,7 +19,7 @@ import adopt.me.api.domain.animal.Animal;
 import adopt.me.api.domain.animal.AnimalRepository;
 import adopt.me.api.domain.animal.DadosCadastroAnimal;
 import adopt.me.api.domain.animal.DadosEdicaoAnimal;
-import adopt.me.api.service.UploadImagemService;
+import adopt.me.api.infra.file.UploadImagemService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
