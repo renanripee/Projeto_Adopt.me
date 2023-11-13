@@ -10,3 +10,7 @@ spring:
             max-request-size: 10MB
 upload:
     path: api/src/main/resources/static
+api:
+    security:
+        token:
+            secret: animais
