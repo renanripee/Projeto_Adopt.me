@@ -42,6 +42,10 @@ public class Animal {
         this.foto = foto;
     }
 
+    public void setAdotado(boolean adotado) {
+        this.adotado = adotado;
+    }
+
     public void editarDados(@Valid DadosEdicaoAnimal dados) {
         
         this.idade = dados.idade();
