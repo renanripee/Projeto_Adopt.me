@@ -12,6 +12,7 @@
 - [Tecnologias Utilizadas](#tecnologias)
 - [Estrutura de Diretório](#estrutura-diretorio)
 - [Regras e Padrões de uso do Git](#regras-padroes)
+- [Desenvolvedores](#desenvolvedores)
 
 ## Visão Geral
 
@@ -39,10 +40,17 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 
 <a name="tecnologias"></a>
 
+### Front-end
 - React - v18.2.0
+
+### Back-end
 - Spring Boot - v3.1.5
+
+### Banco de Dados
 - PostgreSQL - v16
 
+### Servidor
+- Definir
 
 ## Estrutura de Diretório
 
@@ -54,10 +62,11 @@ Projeto_Adopt.me/
 |   |-- Diagramas/
 |   |-- Requisitos/
 |-- Padrões Adotados/
-|-- api/
-|   |-- inserir
-|-- web/
-    |-- inserir
+|-- Implementação/
+|   |-- api/
+|   |   |-- inserir
+|   |-- web/
+|   |   |-- inserir
 |-- README.md
 |-- .gitignore
 ```
@@ -65,14 +74,32 @@ Projeto_Adopt.me/
 
 <a name="regras-padroes"></a>
 
+### Commits
+
 - Descrever de maneira clara e concisa o propósito do commit.
 - Usar gerúndio para definir a mensagem do commit (Ex.: "Adicionando funcionalidade X").
 - Manter os commits atômicos, abordando apenas uma alteração lógica por vez.
 - Manter os commits devidamente mapeados com as issues cadastradas no backlog.
+
+### Branches
+
 - Utilizar as branches "back" e "front" para códigos de back-end e front-end, respectivamente.
 - Realizar merge das branches anteriormente citadas com a branch main somente após a fase de testes e garantia de corretude das funcionalidades criadas.
 - Criar branches específicas para correções críticas.
+- Utilizar apenas letras minúsculas para nomear branches.
+
+### Organização
 - Manter uma estrutura clara de diretório, separando a documentação do código.
+
+### Arquivos ignorados
 - Inserir no arquivo .gitignore a extensão dos arquivos que são gerados durante o processo de compilação ou log (Ex.: .class, .jar, .log).
 - Inserir no arquivo .gitignore pastas e extensões de arquivos relacionados a dependências externas. (Ex.:/.mvn/, /target/).
 - Inserir no arquivo .gitignore a extensão dos arquivos de configuração que são específicos para o ambiente de desenvolvimento local. (Ex.: .env).
+
+## Desenvolvedores
+
+<a name="desenvolvedores"></a>
+
+`João Pedro Ramalho de Sousa` <br>
+`Matheus Bertoldo` <br>
+`Renan Ribeiro Pereira`
