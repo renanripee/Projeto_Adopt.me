@@ -42,4 +42,14 @@ public class AdocaoDeAnimais {
         System.out.println(adocao);
     }
 
+    public void excluir(int id) throws Exception {
+
+        if(!adocaoRepository.existsById(id)){
+            throw new Exception("Não existe uma adoção com o id fornecido!");
+        }
+
+        var animal = animalRepository.findById(id).get();
+        animal.setAdotado(false);
+        adocaoRepository.deleteById(id);
+    }
 }
