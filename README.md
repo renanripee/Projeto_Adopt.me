@@ -12,6 +12,7 @@
 - [Tecnologias Utilizadas](#tecnologias)
 - [Estrutura de Diretório](#estrutura-diretorio)
 - [Regras e Padrões de uso do Git](#regras-padroes)
+- [Regras e Boas Práticas de Codificação](#regras-codificacao)
 - [Desenvolvedores](#desenvolvedores)
 
 ## Visão Geral
@@ -95,6 +96,19 @@ Projeto_Adopt.me/
 - Inserir no arquivo .gitignore a extensão dos arquivos que são gerados durante o processo de compilação ou log (Ex.: .class, .jar, .log).
 - Inserir no arquivo .gitignore pastas e extensões de arquivos relacionados a dependências externas. (Ex.:/.mvn/, /target/).
 - Inserir no arquivo .gitignore a extensão dos arquivos de configuração que são específicos para o ambiente de desenvolvimento local. (Ex.: .env).
+
+## Regras e Boas Práticas de Codificação
+
+<a name="regras-codificacao"></a>
+
+- Identar o código corretamente, definindo de forma clara o escopo das classes, métodos, estruturas condicionais, estruturas de repetição, entre outros.
+- Nomear classes, métodos e variáveis de maneira intuitiva.
+- Utilizar a convenção de nomenclatura Camel Case em classes, métodos e variáveis.
+- Uma classe não deve ser forçada a implementar interfaces que ela não utiliza. Em vez de ter interfaces monolíticas, é melhor ter interfaces mais específicas que são implementadas apenas por classes que precisam da funcionalidade específica.
+- Cada função, classe ou módulo deve ter uma responsabilidade única e fazer uma coisa bem. Isso facilita a compreensão do propósito de cada parte do código.
+- Se necessário, usar comentários para explicar por que o código está fazendo algo específico. No entanto, a meta é escrever código que seja autoexplicativo, minimizando a necessidade de comentários.
+- Evitar repetição de código. A duplicação pode levar a erros e tornar o código mais difícil de manter.
+- Organizar o código de uma maneira lógica, com funções relacionadas agrupadas e conceitos relacionados próximos uns dos outros.
 
 ## Desenvolvedores
 
