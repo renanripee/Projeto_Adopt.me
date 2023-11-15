@@ -41,4 +41,5 @@ public class AdocaoDeAnimais {
         adocaoRepository.save(adocao);
         System.out.println(adocao);
     }
+
 }

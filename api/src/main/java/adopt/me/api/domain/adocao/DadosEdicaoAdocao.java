@@ -6,17 +6,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.validation.constraints.NotNull;
 
-public record DadosCadastroAdocao(
+public record DadosEdicaoAdocao(
     @NotNull
-    int id_tutor,
-    @NotNull
-    int id_animal,
-    @NotNull
+    int id,
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     LocalDateTime data){
-
-        public DadosCadastroAdocao(Adocao adocao){
-            this(adocao.getTutor().getId(), adocao.getAnimal().getId(), adocao.getData());
-        }
-
 }
