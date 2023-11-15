@@ -50,11 +50,16 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 
 ```sh
 .
+|-- Documentação/
+|   |-- Diagramas/
+|   |-- Requisitos/
+|-- Padrões Adotados/
 |-- api/
-|   |-- demais diretórios
-|
+|   |-- inserir
 |-- web/
-    |-- demais diretórios
+    |-- inserir
+|-- README.md
+|-- .gitignore
 ```
 ## Regras e Padrões de uso do Git
 
