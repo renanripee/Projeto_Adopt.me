@@ -25,16 +25,17 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(of = "id")
 public class Tutor {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nome;
     private String telefone;
     private String cpf;
-    
+
     @Embedded
     private Endereco endereco;
 
-    public Tutor(DadosCadastroTutor dados){
+    public Tutor(DadosCadastroTutor dados) {
         this.nome = dados.nome();
         this.telefone = dados.telefone();
         this.cpf = dados.cpf();
@@ -42,19 +43,18 @@ public class Tutor {
     }
 
     public void editarDados(@Valid DadosEdicaoTutor dados) {
-        if(dados.nome() != null){
+        if (dados.nome() != null) {
             this.nome = dados.nome();
         }
-        if(dados.telefone() != null){
+        if (dados.telefone() != null) {
             this.telefone = dados.telefone();
         }
-        if(dados.cpf() != null){
+        if (dados.cpf() != null) {
             this.cpf = dados.cpf();
         }
-        if(dados.endereco() != null){
+        if (dados.endereco() != null) {
             this.endereco.editarDados(dados.endereco());
         }
 
     }
-
 }
