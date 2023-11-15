@@ -49,7 +49,7 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 <a name="estrutura-diretorio"></a>
 
 ```sh
-.
+Projeto_Adopt.me/
 |-- Documentação/
 |   |-- Diagramas/
 |   |-- Requisitos/
