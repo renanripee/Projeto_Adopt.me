@@ -11,6 +11,7 @@
 - [Visão Geral](#visao-geral)
 - [Tecnologias Utilizadas](#tecnologias)
 - [Estrutura de Diretório](#estrutura-diretorio)
+- [Regras e Padrões de uso do Git](#regras-padroes)
 
 ## Visão Geral
 
@@ -55,3 +56,18 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 |-- web/
     |-- demais diretórios
 ```
+## Regras e Padrões de uso do Git
+
+<a name="regras-padroes"></a>
+
+- Descrever de maneira clara e concisa o propósito do commit.
+- Usar gerúndio para definir a mensagem do commit (Ex.: "Adicionando funcionalidade X").
+- Manter os commits atômicos, abordando apenas uma alteração lógica por vez.
+- Manter os commits devidamente mapeados com as issues cadastradas no backlog.
+- Utilizar as branches "back" e "front" para códigos de back-end e front-end, respectivamente.
+- Realizar merge das branches anteriormente citadas com a branch main somente após a fase de testes e garantia de corretude das funcionalidades criadas.
+- Criar branches específicas para correções críticas.
+- Manter uma estrutura clara de diretório, separando a documentação do código.
+- Inserir no arquivo .gitignore a extensão dos arquivos que são gerados durante o processo de compilação ou log (Ex.: .class, .jar, .log).
+- Inserir no arquivo .gitignore pastas e extensões de arquivos relacionados a dependências externas. (Ex.:/.mvn/, /target/).
+- Inserir no arquivo .gitignore a extensão dos arquivos de configuração que são específicos para o ambiente de desenvolvimento local. (Ex.: .env).
