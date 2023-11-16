@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import adopt.me.api.domain.adocao.AdocaoDeAnimais;
 import adopt.me.api.domain.adocao.AdocaoRepository;
 import adopt.me.api.domain.adocao.DadosCadastroAdocao;
+import adopt.me.api.domain.adocao.DadosDetalhamentoAdocao;
 import adopt.me.api.domain.adocao.DadosEdicaoAdocao;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -27,30 +28,39 @@ public class AdocaoController {
     @Autowired
     private AdocaoRepository repository;
     @Autowired
-    private AdocaoDeAnimais adocao;
+    private AdocaoDeAnimais service;
 
     @PostMapping
     @Transactional
-    public void adotar(@RequestBody @Valid DadosCadastroAdocao dados) {
-        adocao.adotar(dados);
+    public ResponseEntity<Object> adotar(@RequestBody @Valid DadosCadastroAdocao dados) {
+        service.adotar(dados);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public List<DadosCadastroAdocao> listar() {
-        return repository.findAll().stream().map(DadosCadastroAdocao::new).toList();
+    public ResponseEntity<List<DadosCadastroAdocao>> listar() {
+        var adocoes = repository.findAll().stream().map(DadosCadastroAdocao::new).toList();
+        return ResponseEntity.ok(adocoes);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> detalhar(@PathVariable int id) {
+        var adocao = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoAdocao(adocao));
     }
 
     @PutMapping
     @Transactional
-    public void editar(@RequestBody @Valid DadosEdicaoAdocao dados) {
+    public ResponseEntity<Object> editar(@RequestBody @Valid DadosEdicaoAdocao dados) {
         var adocao = repository.getReferenceById(dados.id());
         adocao.editarDados(dados);
+        return ResponseEntity.ok(new DadosCadastroAdocao(adocao));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity<Object> excluir(@PathVariable int id) throws Exception{
-        adocao.excluir(id);
+        service.excluir(id);
         return ResponseEntity.noContent().build();
     }
 
