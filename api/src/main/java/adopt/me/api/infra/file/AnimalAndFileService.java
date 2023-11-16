@@ -19,35 +19,12 @@ import adopt.me.api.domain.animal.AnimalRepository;
 import adopt.me.api.domain.animal.DadosCadastroAnimal;
 
 @Service
-public class UploadImagemService {
+public class AnimalAndFileService {
 
     @Value("${upload.path}")
     private String caminho; // Configurado no application.properties
     @Autowired
     private AnimalRepository repository;
-
-    public void cadastrar(DadosCadastroAnimal dados, MultipartFile imagem) throws Exception {
-
-        try {
-
-            String nomeArquivo = StringUtils.cleanPath(imagem.getOriginalFilename());
-            nomeArquivo = atualizarNomeArquivo(nomeArquivo);
-            
-            Animal animal = new Animal(dados);
-            animal.setFoto(nomeArquivo);
-            repository.save(animal);
-
-            armazenarImagem(imagem, nomeArquivo);
-
-        } catch (DataIntegrityViolationException e) {
-            throw new DataIntegrityViolationException("Não foi possível salvar a imagem.\nVariável muito longa para a coluna \"Foto\"");
-        }
-    }
-
-    public void excluirImagem(String nomeFoto) throws IOException {
-        Path caminhoArquivo = Paths.get(caminho).resolve(Paths.get("imagens")).resolve(nomeFoto).normalize();
-        Files.deleteIfExists(caminhoArquivo);
-    }
 
     private String atualizarNomeArquivo(String nome) {
         nome.replaceAll("[^a-zA-Z0-9\\.\\-]", "_");
@@ -56,7 +33,7 @@ public class UploadImagemService {
     }
 
     private void armazenarImagem(MultipartFile imagem, String nomeArquivo) throws Exception {
-        
+
         // Define o destino de upload das imagens
         Path destinoArquivo = Paths.get(caminho).resolve(Paths.get("imagens")).resolve(nomeArquivo)
                 .normalize().toAbsolutePath();
@@ -74,4 +51,34 @@ public class UploadImagemService {
             throw new Exception("Não foi possível armazenar o arquivo");
         }
     }
+
+    private void excluirImagem(String nomeFoto) throws IOException {
+        Path caminhoArquivo = Paths.get(caminho).resolve(Paths.get("imagens")).resolve(nomeFoto).normalize();
+        Files.deleteIfExists(caminhoArquivo);
+    }
+
+    public void cadastrar(DadosCadastroAnimal dados, MultipartFile imagem) throws Exception {
+
+        try {
+
+            String nomeArquivo = StringUtils.cleanPath(imagem.getOriginalFilename());
+            nomeArquivo = atualizarNomeArquivo(nomeArquivo);
+
+            Animal animal = new Animal(dados);
+            animal.setFoto(nomeArquivo);
+            repository.save(animal);
+
+            armazenarImagem(imagem, nomeArquivo);
+
+        } catch (DataIntegrityViolationException e) {
+            throw new DataIntegrityViolationException(
+                    "Não foi possível salvar a imagem.\nVariável muito longa para a coluna \"Foto\"");
+        }
+    }
+
+    public void excluir(Animal animal) throws IOException {
+        excluirImagem(animal.getFoto());
+        repository.deleteById(animal.getId());
+    }
+
 }
