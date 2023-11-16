@@ -35,9 +35,7 @@ public class AnimalController {
     @PostMapping
     @Transactional // necessário para qualquer escrita no banco de dados
     public void cadastrar(@RequestPart("animal") @Valid DadosCadastroAnimal dados, @RequestPart("imagem") MultipartFile imagem) throws Exception{   
-        Animal animal = new Animal(dados);
-        animal.setFoto(service.salvarImagem(imagem));
-        repository.save(animal);
+        service.cadastrar(dados, imagem);
     }
 
     @GetMapping

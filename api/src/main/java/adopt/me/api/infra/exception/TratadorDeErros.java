@@ -4,6 +4,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,7 +20,6 @@ public class TratadorDeErros {
             this(erro.getField(), erro.getDefaultMessage());
         }
     }
-
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<Object> tratarErroDeForeignKey(SQLIntegrityConstraintViolationException e){
@@ -39,7 +39,7 @@ public class TratadorDeErros {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Object> tratarErroViolacaoDeDado(DataIntegrityViolationException e){
-        return ResponseEntity.status(404).body(e.getLocalizedMessage());
+        return ResponseEntity.status(404).body(e.getMessage());
     }
 
 }
