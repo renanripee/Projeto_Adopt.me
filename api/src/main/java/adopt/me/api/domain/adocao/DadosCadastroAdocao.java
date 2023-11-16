@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroAdocao(
+    int id,
     @NotNull
     int id_tutor,
     @NotNull
@@ -16,7 +17,7 @@ public record DadosCadastroAdocao(
     LocalDateTime data){
 
         public DadosCadastroAdocao(Adocao adocao){
-            this(adocao.getTutor().getId(), adocao.getAnimal().getId(), adocao.getData());
+            this(adocao.getId(), adocao.getTutor().getId(), adocao.getAnimal().getId(), adocao.getData());
         }
 
 }

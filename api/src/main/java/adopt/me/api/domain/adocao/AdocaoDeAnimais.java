@@ -52,4 +52,5 @@ public class AdocaoDeAnimais {
         animal.setAdotado(false);
         adocaoRepository.deleteById(id);
     }
+
 }
