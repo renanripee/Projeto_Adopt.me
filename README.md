@@ -48,7 +48,7 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 - Spring Boot - v3.1.5
 
 ### Banco de Dados
-- MySQL - v8.0
+- MySQL - v8.0.32
 
 ### Servidor
 - Definir
