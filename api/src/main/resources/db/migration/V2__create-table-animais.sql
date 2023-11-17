@@ -6,7 +6,7 @@ create table animais(
     tipo varchar(20) not null,
     raca varchar(20) not null,
     descricao varchar(300) null default null,
-    foto varchar(30) not null,
+    foto varchar(50) not null,
     adotado  tinyint(4) not null default 0,
 
     primary key(id)

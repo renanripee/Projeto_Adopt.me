@@ -19,7 +19,6 @@ public class AdocaoDeAnimais {
 
     public void adotar(DadosCadastroAdocao dados) {
 
-        // Verifica se no banco de dados existem tutores e animais com o id
         if (!tutorRepository.existsById(dados.id_tutor())) {
             throw new ValidationException("O id do Tutor não existe!");
         }
@@ -33,7 +32,6 @@ public class AdocaoDeAnimais {
         }
 
         var tutor = tutorRepository.findById(dados.id_tutor()).get();
-        // atualizando booleano de adotado do animal
         animal.setAdotado(true);
 
         var adocao = new Adocao(0, dados.data(), tutor, animal);

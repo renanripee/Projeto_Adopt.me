@@ -28,7 +28,6 @@ public class TokenService {
                     .withSubject(usuario.getUsuario())
                     .withExpiresAt(dataExpiracao())
                     .sign(algoritmo);
-            // .witchClaim("id", usuario.getId()); para adicionar mais informações no token
         } catch (JWTCreationException exception) {
             throw new RuntimeException("Erro ao gerar token JWT", exception);
         }

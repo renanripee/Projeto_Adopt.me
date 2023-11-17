@@ -13,10 +13,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-// @Getter - gera todos os getters
-// @NoArgsConstructor - gera o construtor padrão sem argumentos exigido pela JPA
-// @AllArgsConstructor - gera um construtor com todos os campos
-
 @Table(name = "tutores")
 @Entity(name = "Tutor")
 @Getter

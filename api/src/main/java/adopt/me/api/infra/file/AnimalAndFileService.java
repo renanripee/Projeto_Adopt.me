@@ -22,7 +22,7 @@ import adopt.me.api.domain.animal.DadosCadastroAnimal;
 public class AnimalAndFileService {
 
     @Value("${upload.path}")
-    private String caminho; // Configurado no application.properties
+    private String caminho;
     @Autowired
     private AnimalRepository repository;
 
@@ -34,11 +34,9 @@ public class AnimalAndFileService {
 
     private void armazenarImagem(MultipartFile imagem, String nomeArquivo) throws Exception {
 
-        // Define o destino de upload das imagens
         Path destinoArquivo = Paths.get(caminho).resolve(Paths.get("imagens")).resolve(nomeArquivo)
                 .normalize().toAbsolutePath();
 
-        // Verifica se a pasta /imagens existe
         if (!Files.exists(destinoArquivo.getParent())) {
             Files.createDirectories(destinoArquivo.getParent());
         }

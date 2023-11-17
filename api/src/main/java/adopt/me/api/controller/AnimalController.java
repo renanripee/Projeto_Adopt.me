@@ -35,7 +35,7 @@ public class AnimalController {
     private AnimalAndFileService service;
 
     @PostMapping
-    @Transactional // necessário para qualquer escrita no banco de dados
+    @Transactional
     public ResponseEntity<Object> cadastrar(@RequestPart("animal") @Valid DadosCadastroAnimal dados, @RequestPart("imagem") MultipartFile imagem) throws Exception{   
         service.cadastrar(dados, imagem);
         return ResponseEntity.ok().build();

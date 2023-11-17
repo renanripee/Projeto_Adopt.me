@@ -14,8 +14,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import adopt.me.api.domain.usuario.UsuarioRepository;
 
-// Filtro para execução de requisições
-
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
 
@@ -44,7 +42,6 @@ public class SecurityFilter extends OncePerRequestFilter {
 
         var authorizationHeader = request.getHeader("Authorization");
         if (authorizationHeader != null) {
-            // Para vir sem prefixo
             return authorizationHeader.replace("Bearer ", "");
         }
         return null;

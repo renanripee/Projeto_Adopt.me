@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-// Embeddable considera que os atributos parte da classe a qual Endereco foi Embedded, não sendo uma representação de uma nova tabela e servindo apenas para organização de código.
-
 @Embeddable
 @Getter
 @NoArgsConstructor
