@@ -48,7 +48,7 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 - Spring Boot - v3.1.5
 
 ### Banco de Dados
-- PostgreSQL - v16
+- MySQL - v8.0
 
 ### Servidor
 - Definir
@@ -69,7 +69,6 @@ Projeto_Adopt.me/
 |   |-- web/
 |   |   |-- inserir
 |-- README.md
-|-- .gitignore
 ```
 ## Regras e Padrões de uso do Git
 
