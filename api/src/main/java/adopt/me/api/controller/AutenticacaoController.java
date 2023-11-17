@@ -28,11 +28,8 @@ public class AutenticacaoController {
     public ResponseEntity<Object> efetuarLogin(@RequestBody @Valid DadosAutenticacao dados){
         
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.usuario(), dados.senha());
-        System.out.println(authenticationToken);
         var authentication = manager.authenticate(authenticationToken);
-        System.out.println("AIKALICA");
         var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
-        System.out.println(tokenJWT);
 
         return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }
