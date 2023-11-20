@@ -36,11 +36,15 @@ function CardList() {
 
   return (
     <div className="cards-display">
-      {animals.map((animal, index) => (
-        <div className="card-item">
-          <Card key={index} animal={animal} />
-        </div>
-      ))}
+      {animals.length === 0 ? (
+        <p>Nenhum animal disponível para adoção.</p>
+      ) : (
+        animals.map((animal, index) => (
+          <div className="card-item">
+            <Card key={index} animal={animal} />
+          </div>
+        ))
+      )}
     </div>
   );
 }

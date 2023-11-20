@@ -1,9 +1,8 @@
-import "./App";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
-import Tutores from "./pages/Tutores/Tutores";
+import Tutores from "./pages/Tutores/TutoresList/Tutores";
+//resolver id na rota editar
 
 const AppRoutes = () => {
   return (
