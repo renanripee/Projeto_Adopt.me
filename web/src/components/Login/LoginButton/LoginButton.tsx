@@ -1,24 +1,27 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import "./LoginButton.css";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 type LoginButtonProps = {
   text?: string;
 };
 
 function LoginButton(props: LoginButtonProps) {
-  //ainda sera mudada para verificar fazer o login realmente
-  const navigate = useNavigate();
+  const [autenticado, setAutenticado] = useState(false);
 
-  //dar um jeito de modulzar isso
-  const useNavigateReact = () => {
-    navigate("/home");
+  const realizarLogin = () => {
+    //validar usuario depois
+    setAutenticado(true);
   };
 
   return (
-    <button className="login-button" onClick={useNavigateReact}>
-      {props.text}
-    </button>
+    <div>
+      <button className="login-button" onClick={realizarLogin}>
+        {props.text}
+      </button>
+      {autenticado && <Navigate to="/home" />}
+    </div>
   );
 }
 

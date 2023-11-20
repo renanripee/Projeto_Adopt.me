@@ -1,59 +1,177 @@
+import { useState } from "react";
 import "./Table.css";
+import lapis from "../../assets/lapis.png";
+import lixeira from "../../assets/lixeira.png";
+import seta from "../../assets/seta-baixo.png";
+import ModalTable from "../Modals/ModalTable/ModalTable";
+import { Link } from "react-router-dom";
 
 type TableProps = {
-  firstColumn: string;
-  secondColumn: string;
-  thirdColumn: string;
-  fourthColumn: string;
+  data: any[];
+  columnMapping: { [key: string]: string };
 };
 
 function Table(props: TableProps) {
-  const tutores = [
-    {
-      cpf: "123123123",
-      nome: "nome",
-      rua: "rua",
-      telefone: "telefone",
-    },
-    {
-      cpf: "123123123",
-      nome: "nome",
-      rua: "rua",
-      telefone: "telefone",
-    },
-    {
-      cpf: "123123123",
-      nome: "nome",
-      rua: "rua",
-      telefone: "telefone",
-    },
-  ];
+  const [index, setIndex] = useState<number>(1);
+  const [startIndex, setStartIndex] = useState<number>(0);
+  let rowsNumber = 10;
+  let pagesNumber = Math.floor(props.data.length / rowsNumber);
+  let rowsNumberLastPage =
+    rowsNumber - Math.floor(props.data.length % rowsNumber);
+  let pagesIndex = [];
+  let displayedItems = props.data.slice(startIndex, startIndex + rowsNumber);
+
+  if (rowsNumberLastPage !== 0) pagesNumber++;
+
+  for (let i = 1; i <= pagesNumber; i++) {
+    pagesIndex.push(i);
+  }
+
+  function updateIndexAndArray(i: number) {
+    setIndex(i);
+    setStartIndex((i - 1) * rowsNumber);
+  }
+
+  function emptyRows() {
+    let emptyRows = [];
+    for (let i = 0; i < rowsNumberLastPage; i++) {
+      emptyRows.push(
+        <tr key={i}>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      );
+    }
+    return emptyRows;
+  }
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [idDelete, setIdDelete] = useState(-1);
+
+  const openModal = (id: number) => {
+    setIsModalOpen(true);
+    setIdDelete(id);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleConfirm = () => {
+    console.log("confirm");
+  };
 
   return (
-    <div>
-      <div className="table-content">
+    <div className="table-content">
+      <div>
         <table>
-          <tr>
-            <th className="first-th">{props.firstColumn}</th>
-            <th>{props.secondColumn}</th>
-            <th>{props.thirdColumn}</th>
-            <th>{props.fourthColumn}</th>
-            <th className="last-th"> Ações</th>
-          </tr>
-
-          {tutores.map((tutor, index) => (
-            <tr key={index}>
-              <td>{tutor.cpf}</td>
-              <td>{tutor.nome}</td>
-              <td>{tutor.rua}</td>
-              <td>{tutor.telefone}</td>
-              <td>
-                <button>Editar</button>
-                <button>Excluir</button>
-              </td>
+          <thead>
+            <tr>
+              {Object.values(props.columnMapping).map((columnName, index) =>
+                index === 0 ? (
+                  <th className="first-th" key={index}>
+                    {columnName}
+                  </th>
+                ) : (
+                  <th key={index}>{columnName}</th>
+                )
+              )}
+              <th className="last-th">AÇÕES</th>
             </tr>
-          ))}
+          </thead>
+
+          <tbody>
+            {index === pagesNumber ? (
+              <>
+                {displayedItems.map((item, index) => (
+                  <tr key={index}>
+                    {Object.keys(props.columnMapping).map(
+                      (key, columnIndex) => (
+                        <td key={columnIndex}>{item[key]}</td>
+                      )
+                    )}
+                    <td>
+                      <img
+                        src={lixeira}
+                        alt="lixeira"
+                        className="table-icon"
+                        onClick={() => openModal(item.id)}
+                      ></img>
+                      <Link to={`/editar-tutor/${item.id}`}>
+                        <img
+                          src={lapis}
+                          alt="lapis"
+                          className="table-icon"
+                        ></img>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+                {emptyRows().map((row) => row)}
+              </>
+            ) : (
+              <>
+                {displayedItems.map((item, index) => (
+                  <tr key={index}>
+                    {Object.keys(props.columnMapping).map(
+                      (key, columnIndex) => (
+                        <td key={columnIndex}>{item[key]}</td>
+                      )
+                    )}
+                    <td>
+                      <img
+                        src={lixeira}
+                        alt="lixeira"
+                        className="table-icon"
+                        onClick={() => openModal(item.id)}
+                      ></img>
+                      <Link to={`/editar-tutor/${item.id}`}>
+                        <img
+                          src={lapis}
+                          alt="lapis"
+                          className="table-icon"
+                        ></img>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </>
+            )}
+          </tbody>
         </table>
+      </div>
+      <div className="table-footer">
+        <div className="table-pages-count">
+          <span>Página </span>
+          <div className="dropdown">
+            <button className="dropbtn">
+              {index}{" "}
+              <img src={seta} alt="seta" className="table-icon-seta"></img>
+            </button>
+
+            <div className="dropdown-content">
+              {pagesIndex.map((i) => (
+                <button key={i} onClick={() => updateIndexAndArray(i)}>
+                  {i}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <Link to={"/novo-tutor"} className="table-add-link">
+          <span className="table-add-button">+ adicionar</span>
+        </Link>
+      </div>
+      <div>
+        <ModalTable
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          onConfirm={handleConfirm}
+          id={idDelete}
+        />
       </div>
     </div>
   );

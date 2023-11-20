@@ -6,7 +6,7 @@ function Home() {
   return (
     <div>
       <div className="header-component">
-        <Header home={true} />
+        <Header navigate={true} home={true} />
       </div>
       <div className="home-content">
         <div className="title-home-page">
