@@ -1,0 +1,15 @@
+.cards-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 10vw;
+}
+
+.card-item {
+  width: calc(33.33% - 20px); /* Ajuste o valor conforme necessário */
+  margin: 10px; /* Ajuste o valor conforme necessário */
+  box-sizing: border-box;
+  z-index: 0;
+}
