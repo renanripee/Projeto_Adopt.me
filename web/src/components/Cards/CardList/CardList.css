@@ -1,15 +1,16 @@
 .cards-display {
-  display: flex;
+  display: grid;
+  gap: 5px;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
   margin: 0 10vw;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
 }
 
 .card-item {
-  width: calc(33.33% - 20px); /* Ajuste o valor conforme necessário */
-  margin: 10px; /* Ajuste o valor conforme necessário */
+  margin: 10px;
   box-sizing: border-box;
   z-index: 0;
 }
