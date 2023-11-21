@@ -8,6 +8,7 @@
 .image-area-header {
   background: rgba(46, 46, 46, 0.5);
   width: 100vw;
+  height: 150px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;

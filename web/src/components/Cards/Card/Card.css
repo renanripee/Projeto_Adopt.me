@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 20vw;
+  width: 300px;
   height: 42vh;
   border: 3px solid #005975;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -12,7 +12,7 @@
 }
 
 .card-image img {
-  width: 20vw;
+  width: 300px;
   height: 42vh;
   object-fit: cover;
   position: absolute;
@@ -32,7 +32,7 @@
   top: 0;
   left: 0;
   margin-left: -0.5vh;
-  width: 20.5vw;
+  width: 310px;
   height: 43.2vh;
   overflow: hidden;
 }
@@ -46,7 +46,7 @@
   position: absolute;
   align-content: flex-end;
   bottom: 0px;
-  width: 20vw;
+  width: 300px;
   height: 15vh;
   z-index: 1;
 }
@@ -55,7 +55,7 @@
   position: absolute;
   align-content: flex-end;
   bottom: 0px;
-  width: 20vw;
+  width: 300px;
   height: 15vh;
   background: rgba(0, 0, 0, 0.4);
 }

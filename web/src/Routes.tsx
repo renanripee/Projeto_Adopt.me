@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home/Home";
-import Tutores from "./pages/Tutores/TutoresList/Tutores";
-import TutoresNew from "./pages/Tutores/TutoresNew/TutoresNew";
-//resolver id na rota editar
+import Tutores from "./pages/Tutores/TutoresList/ExibirTutores";
+import TutoresNew from "./pages/Tutores/TutoresNew/CadastrarTutor";
+import TutoresEdit from "./pages/Tutores/TutorEdit/EditarTutor";
 
 const AppRoutes = () => {
   return (
@@ -13,6 +13,7 @@ const AppRoutes = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/tutores" element={<Tutores />} />
         <Route path="/novo-tutor" element={<TutoresNew />} />
+        <Route path="/editar-tutor/:id" element={<TutoresEdit />} />
       </Routes>
     </BrowserRouter>
   );
