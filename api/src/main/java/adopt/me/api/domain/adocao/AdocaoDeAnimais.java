@@ -37,7 +37,6 @@ public class AdocaoDeAnimais {
         var adocao = new Adocao(0, dados.data(), tutor, animal);
 
         adocaoRepository.save(adocao);
-        System.out.println(adocao);
     }
 
     public void excluir(int id) throws Exception {

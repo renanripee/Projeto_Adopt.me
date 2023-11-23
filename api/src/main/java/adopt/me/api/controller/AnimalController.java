@@ -42,8 +42,14 @@ public class AnimalController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Animal>> listar(){
+    public ResponseEntity<List<Animal>> listarNaoAdotados(){
         var animais = repository.findAll();
+        return ResponseEntity.ok().body(animais);
+    }
+
+    @GetMapping("/disponiveis")
+    public ResponseEntity<List<Animal>> listar(){
+        var animais = repository.findByAdotado(false);
         return ResponseEntity.ok().body(animais);
     }
 
