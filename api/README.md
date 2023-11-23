@@ -75,16 +75,16 @@ Os guias a seguir ilustram como usar alguns recursos:
 
 Entidade: Animal
 
-Endpoint: /animais
-Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login
+Endpoint: /animais</br>
+Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login</br>
 
 POST
-Descrição: Cadastra o animal no banco de dados. 
-Observações: Deve-se passar os dados do animal ("animal") e o arquivo de imagem ("imagem").
-Os dados passam por uma validação.
+Descrição: Cadastra o animal no banco de dados. </br>
+Observações: Deve-se passar os dados do animal ("animal") e o arquivo de imagem ("imagem").</br>
+Os dados passam por uma validação.</br>
 
 GET
-Descrição: Listagem dos animais no banco de dados.
+Descrição: Listagem dos animais no banco de dados.</br>
 
 /id
 Lista o animal com id passado
@@ -93,8 +93,8 @@ Lista o animal com id passado
 Lista os animais disponíveis para adoção
 
 PUT
-Descrição: Altera o animal no banco de dados.
-Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.
+Descrição: Altera o animal no banco de dados.</br>
+Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.</br>
 
 DELETE
 Descrição: Deleta o animal no banco de dados.
