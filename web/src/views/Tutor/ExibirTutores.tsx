@@ -1,7 +1,7 @@
-import Header from "../../../components/Header/Header";
-import Table from "../../../components/Table/Table";
+import Header from "../../components/Header/Header";
+import Table from "../../components/Table/Table";
 import "./Tutores.css";
-import items from "../../../components/Table/itens.json";
+import items from "../../components/Table/itens.json";
 
 const columnMapping = {
   cpf: "CPF",

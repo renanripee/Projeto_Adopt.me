@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Home from "./pages/Home/Home";
-import Tutores from "./pages/Tutores/TutoresList/ExibirTutores";
-import TutoresNew from "./pages/Tutores/TutoresNew/CadastrarTutor";
-import TutoresEdit from "./pages/Tutores/TutorEdit/EditarTutor";
+import Login from "./views/Login";
+import Home from "./views/Home/Principal";
+import Tutores from "./views/Tutor/ExibirTutores";
+import TutoresNew from "./views/Tutor/CadastrarTutor";
+import TutoresEdit from "./views/Tutor/EditarTutor";
 
 const AppRoutes = () => {
   return (
