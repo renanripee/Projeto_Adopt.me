@@ -42,7 +42,7 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 - Spring Boot - v3.1.5
 - MySQL - v8.0
 
-- Utilizar Insomnia v8.3.2 *ou menor* para vizualizar.
+Utilizar Insomnia v8.3.2 *ou menor* para vizualizar.
 
 ## Estrutura de Diretório
 
