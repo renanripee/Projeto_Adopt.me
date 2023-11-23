@@ -61,12 +61,10 @@ Os guias a seguir ilustram como usar alguns recursos:
 ## Endpoints
 <a name="endpoints"></a>
 
-### Login
-#### /login (POST)
+### Login (/login)
 *Descrição:* Verifica se o usuário e senha são iguais aos cadastrados. Retorna um token de acesso válido por 2 horas.
 
-### Animal
-#### /animais
+### Animal (/animais)
 *Requisitos de Autenticação:* Requer autenticação a partir do TOKEN gerado pelo Login
 
 - **POST**
@@ -76,11 +74,11 @@ Os guias a seguir ilustram como usar alguns recursos:
 - **GET**
   *Descrição:* Listagem dos animais no banco de dados.
 
-- **/id**
-  *Descrição:* Lista o animal com o ID passado.
+    - **/id**
+    *Descrição:* Lista o animal com o ID passado.
 
-- **/disponiveis**
-  *Descrição:* Lista os animais disponíveis para adoção.
+    - **/disponiveis**
+    *Descrição:* Lista os animais disponíveis para adoção.
 
 - **PUT**
   *Descrição:* Altera o animal no banco de dados.
@@ -90,8 +88,8 @@ Os guias a seguir ilustram como usar alguns recursos:
   *Descrição:* Deleta o animal no banco de dados.
   *Observações:* O ID do animal a ser deletado deve ser passado a partir da URL ("/id").
 
-### Tutor
-#### /tutores
+### Tutor (/tutores)
+
 *Requisitos de Autenticação:* Requer autenticação a partir do TOKEN gerado pelo Login
 
 - **POST**
@@ -101,8 +99,8 @@ Os guias a seguir ilustram como usar alguns recursos:
 - **GET**
   *Descrição:* Listagem dos tutores no banco de dados.
 
-- **/id**
-  *Descrição:* Lista o tutor com o ID passado.
+    - **/id**
+    *Descrição:* Lista o tutor com o ID passado.
 
 - **PUT**
   *Descrição:* Altera o tutor no banco de dados.
@@ -112,8 +110,7 @@ Os guias a seguir ilustram como usar alguns recursos:
   *Descrição:* Deleta o tutor no banco de dados.
   *Observações:* O ID do tutor a ser deletado deve ser passado a partir da URL ("/id").
 
-### Adoção
-#### /adocoes
+### Adoção (/adocoes)
 *Requisitos de Autenticação:* Requer autenticação a partir do TOKEN gerado pelo Login
 
 - **POST**
@@ -123,8 +120,8 @@ Os guias a seguir ilustram como usar alguns recursos:
 - **GET**
   *Descrição:* Listagem das adoções no banco de dados.
 
-- **/id**
-  *Descrição:* Lista a adoção com o ID passado.
+    - **/id**
+    *Descrição:* Lista a adoção com o ID passado.
 
 - **PUT**
   *Descrição:* Altera a adoção no banco de dados.
