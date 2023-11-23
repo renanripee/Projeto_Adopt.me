@@ -7,6 +7,10 @@
 - [Guias](#guias)
 - [Referências](#referencias)
 - [Endpoints](#endpoints)
+    -[Login](#login)
+    -[Animal](#animal)
+    -[Tutor](#tutor)
+    -[Adoção](#adocao)
 
 ## Descrição
 
@@ -57,16 +61,98 @@ Os guias a seguir ilustram como usar alguns recursos:
 ## Endpoints
 <a name="endpoints"></a>
 
-Método HTTP: GET, POST, PUT, DELETE, etc.
+### Login
+<a name="login">
+    O usuário e senha criptografada do administrador já são previamente adicionadas ao banco de dados.
 
-Endpoint: O URL para acessar o endpoint.
+    POST
+    Descrição: Verifica se usuario e senha são iguais a cadastrada.
+    Observações: É retornada um token de acesso que dura 2 horas. Após isso, é necessário relogar.
+<a>
 
-Descrição: Uma breve descrição do que o endpoint faz.
+### Animal
 
-Requisitos de Autenticação: Se o endpoint requer autenticação, inclua detalhes sobre como autenticar as solicitações.
+<a name="animal">
+Entidade: Animal
 
-Parâmetros: Lista de parâmetros de consulta ou corpo, se aplicável.
+Endpoint: /animais
+Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login
 
-Exemplo de Solicitação: Forneça um exemplo de como fazer uma solicitação para o endpoint.
+POST
+Descrição: Cadastra o animal no banco de dados. 
+Observações: Deve-se passar os dados do animal ("animal") e o arquivo de imagem ("imagem").
+Os dados passam por uma validação.
 
-Exemplo de Resposta: Mostre um exemplo de resposta do endpoint.
+GET
+Descrição: Listagem dos animais no banco de dados.
+
+/id
+Lista o animal com id passado
+
+/disponiveis
+Lista os animais disponíveis para adoção
+
+PUT
+Descrição: Altera o animal no banco de dados.
+Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.
+
+DELETE
+Descrição: Deleta o animal no banco de dados.
+Observações: O id do animal a ser deletado deve ser passado a partir da URL ("/id").
+
+</a>
+
+### Tutor
+<a name="tutor">
+Entidade: Tutor
+
+Endpoint: /tutores
+Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login
+
+POST
+Descrição: Cadastra o tutor no banco de dados. 
+Observações: Os dados passam por uma validação.
+
+GET
+Descrição: Listagem dos tutores no banco de dados.
+
+/id
+Lista o tutor com id passado
+
+PUT
+Descrição: Altera o tutor no banco de dados.
+Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.
+
+DELETE
+Descrição: Deleta o tutor no banco de dados.
+Observações: O id do tutor a ser deletado deve ser passado a partir da URL ("/id").
+
+</a>
+
+
+### Adoção
+<a name="adocao">
+Entidade: Adoção
+
+Endpoint: /adocoes
+Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login
+
+POST
+Descrição: Cadastra uma adoção no banco de dados. 
+Observações: Os dados passam por uma validação.
+
+/id
+Lista a adoção com id passado
+
+GET
+Descrição: Listagem das adoções no banco de dados.
+
+PUT
+Descrição: Altera a adoção no banco de dados.
+Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.
+
+DELETE
+Descrição: Deleta a adoção no banco de dados.
+Observações: O id da adoção a ser deletado deve ser passado a partir da URL ("/id").
+
+</a>
