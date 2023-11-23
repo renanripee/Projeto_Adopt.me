@@ -71,7 +71,8 @@ Os guias a seguir ilustram como usar alguns recursos:
 
 ### Animal
 
-<a name="animal">
+<a name="animal"></a>
+
 Entidade: Animal
 
 Endpoint: /animais
@@ -99,10 +100,10 @@ DELETE
 Descrição: Deleta o animal no banco de dados.
 Observações: O id do animal a ser deletado deve ser passado a partir da URL ("/id").
 
-</a>
 
 ### Tutor
-<a name="tutor">
+<a name="tutor"></a>
+
 Entidade: Tutor
 
 Endpoint: /tutores
@@ -126,11 +127,10 @@ DELETE
 Descrição: Deleta o tutor no banco de dados.
 Observações: O id do tutor a ser deletado deve ser passado a partir da URL ("/id").
 
-</a>
 
 
 ### Adoção
-<a name="adocao">
+<a name="adocao"></a>
 Entidade: Adoção
 
 Endpoint: /adocoes
@@ -154,4 +154,3 @@ DELETE
 Descrição: Deleta a adoção no banco de dados.
 Observações: O id da adoção a ser deletado deve ser passado a partir da URL ("/id").
 
-</a>
