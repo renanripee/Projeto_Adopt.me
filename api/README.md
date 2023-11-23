@@ -61,12 +61,12 @@ Os guias a seguir ilustram como usar alguns recursos:
 ## Endpoints
 <a name="endpoints"></a>
 
-</a name="login">
+<a name="login"></a>
 
 ### Login (/login)
 *Descrição:* Verifica se o usuário e senha são iguais aos cadastrados. Retorna um token de acesso válido por 2 horas.
 
-</a name="animal">
+<a name="animal"></a>
 
 ### Animal (/animais)
 *Requisitos de Autenticação:* Requer autenticação a partir do TOKEN gerado pelo Login
@@ -92,7 +92,7 @@ Os guias a seguir ilustram como usar alguns recursos:
   *Descrição:* Deleta o animal no banco de dados.
   *Observações:* O ID do animal a ser deletado deve ser passado a partir da URL ("/id").
 
-</a name="tutor">
+<a name="tutor"></a>
 
 ### Tutor (/tutores)
 
@@ -116,7 +116,7 @@ Os guias a seguir ilustram como usar alguns recursos:
   *Descrição:* Deleta o tutor no banco de dados.
   *Observações:* O ID do tutor a ser deletado deve ser passado a partir da URL ("/id").
 
-</a name="adocao">
+<a name="adocao"></a>
 
 ### Adoção (/adocoes)
 *Requisitos de Autenticação:* Requer autenticação a partir do TOKEN gerado pelo Login
