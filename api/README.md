@@ -7,10 +7,10 @@
 - [Guias](#guias)
 - [Referências](#referencias)
 - [Endpoints](#endpoints)
-    -[Login](#login)
-    -[Animal](#animal)
-    -[Tutor](#tutor)
-    -[Adoção](#adocao)
+    - [Login](#login)
+    - [Animal](#animal)
+    - [Tutor](#tutor)
+    - [Adoção](#adocao)
 
 ## Descrição
 
@@ -62,13 +62,12 @@ Os guias a seguir ilustram como usar alguns recursos:
 <a name="endpoints"></a>
 
 ### Login
-<a name="login">
+<a name="login"></a>
     O usuário e senha criptografada do administrador já são previamente adicionadas ao banco de dados.
 
     POST
     Descrição: Verifica se usuario e senha são iguais a cadastrada.
     Observações: É retornada um token de acesso que dura 2 horas. Após isso, é necessário relogar.
-<a>
 
 ### Animal
 
