@@ -77,12 +77,12 @@ Entidade: Animal
 
 Endpoint: /animais</br>
 Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login</br>
----
+
 POST</br>
 Descrição: Cadastra o animal no banco de dados. </br>
 Observações: Deve-se passar os dados do animal ("animal") e o arquivo de imagem ("imagem").</br>
 Os dados passam por uma validação.</br>
----
+
 GET</br>
 Descrição: Listagem dos animais no banco de dados.</br>
 
@@ -91,11 +91,11 @@ Lista o animal com id passado
 
 /disponiveis
 Lista os animais disponíveis para adoção
----
+
 PUT</br>
 Descrição: Altera o animal no banco de dados.</br>
 Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.</br>
----
+
 DELETE</br>
 Descrição: Deleta o animal no banco de dados.</br>
 Observações: O id do animal a ser deletado deve ser passado a partir da URL ("/id").</br>
@@ -108,21 +108,21 @@ Entidade: Tutor
 
 Endpoint: /tutores</br>
 Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login</br>
----
+
 POST</br>
 Descrição: Cadastra o tutor no banco de dados. </br>
 Observações: Os dados passam por uma validação.</br>
----
+
 GET</br>
 Descrição: Listagem dos tutores no banco de dados.</br>
 
 /id</br>
 Lista o tutor com id passado</br>
----
+
 PUT</br>
 Descrição: Altera o tutor no banco de dados.</br>
 Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.</br>
----
+
 DELETE</br>
 Descrição: Deleta o tutor no banco de dados.</br>
 Observações: O id do tutor a ser deletado deve ser passado a partir da URL ("/id").</br>
@@ -135,21 +135,21 @@ Entidade: Adoção
 
 Endpoint: /adocoes</br>
 Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login</br>
----
+
 POST</br>
 Descrição: Cadastra uma adoção no banco de dados. </br>
 Observações: Os dados passam por uma validação.</br>
----
+
 GET</br>
 Descrição: Listagem das adoções no banco de dados.</br>
----
+
 /id</br>
 Lista a adoção com id passado</br>
----
+
 PUT</br>
 Descrição: Altera a adoção no banco de dados.</br>
 Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.</br>
----
+
 DELETE</br>
 Descrição: Deleta a adoção no banco de dados.</br>
 Observações: O id da adoção a ser deletado deve ser passado a partir da URL ("/id").</br>
