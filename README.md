@@ -50,8 +50,19 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 ```sh
 .
 |-- api/
-|   |-- demais diretórios
-|
+|   |-- src/ main/
+|       |-- java/
+|           |-- adopt/me/api
+|               |-- controller
+|               |-- domain
+|               |-- infra
+|                   |-- exception
+|                   |-- file
+|                   |-- security
+|       |-- resources/
+|           |-- db/migration
+|           |-- static
+|   |-- target/
 |-- web/
     |-- demais diretórios
 ```
