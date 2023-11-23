@@ -62,95 +62,74 @@ Os guias a seguir ilustram como usar alguns recursos:
 <a name="endpoints"></a>
 
 ### Login
-<a name="login"></a>
-    O usuário e senha criptografada do administrador já são previamente adicionadas ao banco de dados.
-
-    POST
-    Descrição: Verifica se usuario e senha são iguais a cadastrada.
-    Observações: É retornada um token de acesso que dura 2 horas. Após isso, é necessário relogar.
+#### /login (POST)
+*Descrição:* Verifica se o usuário e senha são iguais aos cadastrados. Retorna um token de acesso válido por 2 horas.
 
 ### Animal
+#### /animais
+*Requisitos de Autenticação:* Requer autenticação a partir do TOKEN gerado pelo Login
 
-<a name="animal"></a>
+- **POST**
+  *Descrição:* Cadastra o animal no banco de dados.
+  *Observações:* Deve-se passar os dados do animal (`"animal"`) e o arquivo de imagem (`"imagem"`). Os dados passam por uma validação.
 
-Entidade: Animal
+- **GET**
+  *Descrição:* Listagem dos animais no banco de dados.
 
-Endpoint: /animais</br>
-Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login</br>
+- **/id**
+  *Descrição:* Lista o animal com o ID passado.
 
-POST</br>
-Descrição: Cadastra o animal no banco de dados. </br>
-Observações: Deve-se passar os dados do animal ("animal") e o arquivo de imagem ("imagem").</br>
-Os dados passam por uma validação.</br>
+- **/disponiveis**
+  *Descrição:* Lista os animais disponíveis para adoção.
 
-GET</br>
-Descrição: Listagem dos animais no banco de dados.</br>
+- **PUT**
+  *Descrição:* Altera o animal no banco de dados.
+  *Observações:* Necessário passar o ID a partir do JSON. Os dados passam por uma validação.
 
-/id
-Lista o animal com id passado
-
-/disponiveis
-Lista os animais disponíveis para adoção
-
-PUT</br>
-Descrição: Altera o animal no banco de dados.</br>
-Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.</br>
-
-DELETE</br>
-Descrição: Deleta o animal no banco de dados.</br>
-Observações: O id do animal a ser deletado deve ser passado a partir da URL ("/id").</br>
-
+- **DELETE**
+  *Descrição:* Deleta o animal no banco de dados.
+  *Observações:* O ID do animal a ser deletado deve ser passado a partir da URL ("/id").
 
 ### Tutor
-<a name="tutor"></a>
+#### /tutores
+*Requisitos de Autenticação:* Requer autenticação a partir do TOKEN gerado pelo Login
 
-Entidade: Tutor
+- **POST**
+  *Descrição:* Cadastra o tutor no banco de dados.
+  *Observações:* Os dados passam por uma validação.
 
-Endpoint: /tutores</br>
-Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login</br>
+- **GET**
+  *Descrição:* Listagem dos tutores no banco de dados.
 
-POST</br>
-Descrição: Cadastra o tutor no banco de dados. </br>
-Observações: Os dados passam por uma validação.</br>
+- **/id**
+  *Descrição:* Lista o tutor com o ID passado.
 
-GET</br>
-Descrição: Listagem dos tutores no banco de dados.</br>
+- **PUT**
+  *Descrição:* Altera o tutor no banco de dados.
+  *Observações:* Necessário passar o ID a partir do JSON. Os dados passam por uma validação.
 
-/id</br>
-Lista o tutor com id passado</br>
-
-PUT</br>
-Descrição: Altera o tutor no banco de dados.</br>
-Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.</br>
-
-DELETE</br>
-Descrição: Deleta o tutor no banco de dados.</br>
-Observações: O id do tutor a ser deletado deve ser passado a partir da URL ("/id").</br>
-
-
+- **DELETE**
+  *Descrição:* Deleta o tutor no banco de dados.
+  *Observações:* O ID do tutor a ser deletado deve ser passado a partir da URL ("/id").
 
 ### Adoção
-<a name="adocao"></a>
-Entidade: Adoção
+#### /adocoes
+*Requisitos de Autenticação:* Requer autenticação a partir do TOKEN gerado pelo Login
 
-Endpoint: /adocoes</br>
-Requisitos de Autenticação: Requer autenticação a partir do TOKEN gerado pelo Login</br>
+- **POST**
+  *Descrição:* Cadastra uma adoção no banco de dados.
+  *Observações:* Os dados passam por uma validação.
 
-POST</br>
-Descrição: Cadastra uma adoção no banco de dados. </br>
-Observações: Os dados passam por uma validação.</br>
+- **GET**
+  *Descrição:* Listagem das adoções no banco de dados.
 
-GET</br>
-Descrição: Listagem das adoções no banco de dados.</br>
+- **/id**
+  *Descrição:* Lista a adoção com o ID passado.
 
-/id</br>
-Lista a adoção com id passado</br>
+- **PUT**
+  *Descrição:* Altera a adoção no banco de dados.
+  *Observações:* Necessário passar o ID a partir do JSON. Os dados passam por uma validação.
 
-PUT</br>
-Descrição: Altera a adoção no banco de dados.</br>
-Observações: Necessário passar o id a partir do JSON. Os dados passam por uma validação.</br>
-
-DELETE</br>
-Descrição: Deleta a adoção no banco de dados.</br>
-Observações: O id da adoção a ser deletado deve ser passado a partir da URL ("/id").</br>
-
+- **DELETE**
+  *Descrição:* Deleta a adoção no banco de dados.
+  *Observações:* O ID da adoção a ser deletada deve ser passado a partir da URL ("/id").
