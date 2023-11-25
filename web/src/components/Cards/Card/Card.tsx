@@ -1,20 +1,22 @@
 import { useState } from "react";
 import "./Card.css";
-import Image from "../../../assets/killua.jpg";
-import Hover from "../../../assets/hover.png";
+import IAnimal from "../../../interfaces/animal";
 
 type CardProps = {
-  animal: {
-    name: string;
-    type: string;
-  };
+  animal: IAnimal;
+  hover: string;
+  onClick: (id: number) => void;
 };
 
 function Card(props: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
+  function getImage() {
+    return props.animal.imagem;
+  }
+
   return (
-    <div>
+    <div onClick={() => props.onClick(props.animal.id)}>
       <div
         className="card-layout"
         onMouseEnter={() => setIsHovered(true)}
@@ -22,11 +24,11 @@ function Card(props: CardProps) {
       >
         <div>
           {isHovered ? (
-            <img className="hover-card-image" src={Hover} alt="hover" />
+            <img className="hover-card-image" src={props.hover} alt="hover" />
           ) : null}
         </div>
         <div className="card-image">
-          <img src={Image} alt="imagem" />
+          <img src={getImage()} alt="imagem" />
         </div>
         <div className="card-discription">
           {!isHovered ? (
@@ -35,8 +37,8 @@ function Card(props: CardProps) {
           <div className="card-text">
             {!isHovered ? (
               <div>
-                <p className="card-animal-name">{props.animal.name}</p>
-                <p className="card-animal-type">{props.animal.type}</p>
+                <p className="card-animal-name">{props.animal.nome}</p>
+                <p className="card-animal-type">{props.animal.tipo}</p>
               </div>
             ) : null}
           </div>
