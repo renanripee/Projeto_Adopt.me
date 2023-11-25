@@ -4,6 +4,7 @@ import Home from "./views/Home/Principal";
 import Tutores from "./views/Tutor/ExibirTutores";
 import TutoresNew from "./views/Tutor/CadastrarTutor";
 import TutoresEdit from "./views/Tutor/EditarTutor";
+import Animais from "./views/Animal/ExibirAnimais";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
         <Route path="/tutores" element={<Tutores />} />
         <Route path="/novo-tutor" element={<TutoresNew />} />
         <Route path="/editar-tutor/:id" element={<TutoresEdit />} />
+        <Route path="/animais" element={<Animais />} />
       </Routes>
     </BrowserRouter>
   );

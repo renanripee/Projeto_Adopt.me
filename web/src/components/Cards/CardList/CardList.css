@@ -2,11 +2,17 @@
   display: grid;
   gap: 5px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
   margin: 0 10vw;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+}
+
+@media (max-width: 680px) {
+  .cards-display {
+    justify-content: space-between;
+  }
 }
 
 .card-item {
