@@ -1,0 +1,84 @@
+.animal-form-content {
+  margin-top: 30vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 900px) {
+  .animal-form-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.animal-form-image-area {
+  width: 20vw;
+  margin-left: 5vw;
+}
+
+.animal-form-image {
+  width: 350px;
+  height: 350px;
+  margin-top: 20px;
+}
+
+.animal-form-input-area {
+  width: 50vw;
+}
+
+.animal-form-description {
+  background: #d9d9d9;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-left: 0.5rem solid #005975;
+  padding-left: 1vw;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
+  font-size: 1rem;
+  height: 20vh;
+  width: 100%;
+}
+
+.nome {
+  width: 80%;
+}
+
+.idade {
+  width: 15%;
+}
+
+.raca {
+  width: 60%;
+}
+
+.tipo {
+  width: 35%;
+}
+
+.descricao {
+  width: 100%;
+}
+
+.input-tutor-form-descricao {
+  background: #d9d9d9;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-left: 0.5rem solid #005975;
+  padding-bottom: 20vh;
+  padding-top: 2vh;
+  padding-left: 1vw;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
+  font-size: 1rem;
+}
+
+.selected {
+  border: solid 3px #005975;
+}
+
+.selected img {
+  position: relative;
+  object-fit: cover;
+  width: 100%;
+}

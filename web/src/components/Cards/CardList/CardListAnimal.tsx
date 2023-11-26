@@ -1,6 +1,6 @@
 import Card from "../Card/Card";
 import "./CardList.css";
-import IAnimal from "../../../interfaces/animal";
+import { IAnimal } from "../../../interfaces/animal";
 
 interface CardListProps {
   animals: IAnimal[];
@@ -8,9 +8,7 @@ interface CardListProps {
 }
 
 function CardList(props: CardListProps) {
-  function onClick(id: number) {
-    console.log(id);
-  }
+  function onClick(id: number) {}
 
   return (
     <div className="cards-display">

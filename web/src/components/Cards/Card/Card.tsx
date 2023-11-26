@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Card.css";
-import IAnimal from "../../../interfaces/animal";
+import { IAnimal } from "../../../interfaces/animal";
 
 type CardProps = {
   animal: IAnimal;
@@ -12,7 +12,7 @@ function Card(props: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   function getImage() {
-    return props.animal.imagem;
+    return props.animal.foto;
   }
 
   return (
@@ -28,7 +28,7 @@ function Card(props: CardProps) {
           ) : null}
         </div>
         <div className="card-image">
-          <img src={getImage()} alt="imagem" />
+          <img src={String(getImage())} alt="imagem" />
         </div>
         <div className="card-discription">
           {!isHovered ? (

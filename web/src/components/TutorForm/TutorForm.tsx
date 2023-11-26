@@ -3,23 +3,13 @@ import "../../components/Login/LoginButton/LoginButton.css";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import listaTutores from "../Table/itens.json";
-
-type TutorData = {
-  id: string;
-  cpf: string;
-  nome: string;
-  telefone: string;
-  cep: string;
-  rua: string;
-  bairro: string;
-  numero: string;
-};
+import ITutor from "../../interfaces/tutor";
 
 type TutorFormProps = {
   id?: number;
 };
 
-const camposObrigatorios: Array<keyof TutorData> = [
+const camposObrigatorios: Array<keyof ITutor> = [
   "nome",
   "cpf",
   "telefone",
@@ -30,7 +20,7 @@ const camposObrigatorios: Array<keyof TutorData> = [
 ];
 
 function TutorForm(props: TutorFormProps) {
-  const [tutor, setTutor] = useState<TutorData>({
+  const [tutor, setTutor] = useState<ITutor>({
     id: "",
     cpf: "",
     nome: "",
@@ -55,7 +45,7 @@ function TutorForm(props: TutorFormProps) {
     if (itemEncontrado) {
       setTutor(itemEncontrado);
     }
-  }, []);
+  }, [props.id]);
 
   function handleSubmit() {
     const newErrors: TutorErrors = {};
@@ -119,14 +109,14 @@ function TutorForm(props: TutorFormProps) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="container">
-        <div className="tutor-form-content">
+      <form onSubmit={handleSubmit} className="tutor-form-content">
+        <div>
           <div className="tutor-form-input-area">
-            <div className="input-area-tutor-form">
+            <div className="input-area-tutor-form nome-tutor-form">
               <label>Nome</label>
               <input
                 type="text"
-                className={`input-tutor-form nome ${
+                className={`input-tutor-form ${
                   errorMessages.nome ? "error" : ""
                 }`}
                 value={tutor.nome}
@@ -140,11 +130,11 @@ function TutorForm(props: TutorFormProps) {
               )}
             </div>
             <div className="tutor-form-input-column">
-              <div className="input-area-tutor-form">
+              <div className="input-area-tutor-form cpf-tutor-form">
                 <label>CPF</label>
                 <input
                   type="text"
-                  className={`input-tutor-form cpf ${
+                  className={`input-tutor-form ${
                     errorMessages.cpf ? "error" : ""
                   }`}
                   value={formatCPF(tutor.cpf)}
@@ -157,11 +147,11 @@ function TutorForm(props: TutorFormProps) {
                   <p className="error-message">{errorMessages.cpf}</p>
                 )}
               </div>
-              <div className="input-area-tutor-form">
+              <div className="input-area-tutor-form telefone-tutor-form">
                 <label>Telefone</label>
                 <input
                   type="text"
-                  className={`input-tutor-form telefone ${
+                  className={`input-tutor-form ${
                     errorMessages.telefone ? "error" : ""
                   }`}
                   value={formatPhone(tutor.telefone)}
@@ -179,11 +169,11 @@ function TutorForm(props: TutorFormProps) {
           <div className="tutor-form-input-area">
             <div className="tutor-form-adress">ENDEREÇO</div>
             <div className="tutor-form-input-column">
-              <div className="input-area-tutor-form">
+              <div className="input-area-tutor-form cep-tutor-form ">
                 <label>CEP</label>
                 <input
                   type="text"
-                  className={`input-tutor-form cep ${
+                  className={`input-tutor-form ${
                     errorMessages.cep ? "error" : ""
                   }`}
                   value={tutor.cep}
@@ -196,11 +186,11 @@ function TutorForm(props: TutorFormProps) {
                   <p className="error-message">{errorMessages.cep}</p>
                 )}
               </div>
-              <div className="input-area-tutor-form">
+              <div className="input-area-tutor-form rua-tutor-form">
                 <label>Rua</label>
                 <input
                   type="text"
-                  className={`input-tutor-form rua ${
+                  className={`input-tutor-form ${
                     errorMessages.rua ? "error" : ""
                   }`}
                   value={tutor.rua}
@@ -213,11 +203,11 @@ function TutorForm(props: TutorFormProps) {
               </div>
             </div>
             <div className="tutor-form-input-column">
-              <div className="input-area-tutor-form">
+              <div className="input-area-tutor-form bairro-tutor-form">
                 <label>Bairro</label>
                 <input
                   type="text"
-                  className={`input-tutor-form bairro ${
+                  className={`input-tutor-form ${
                     errorMessages.bairro ? "error" : ""
                   }`}
                   value={tutor.bairro}
@@ -228,11 +218,11 @@ function TutorForm(props: TutorFormProps) {
                   <p className="error-message">{errorMessages.bairro}</p>
                 )}
               </div>
-              <div className="input-area-tutor-form">
+              <div className="input-area-tutor-form numero-tutor-form">
                 <label>Número</label>
                 <input
                   type="text"
-                  className={`input-tutor-form numero ${
+                  className={`input-tutor-form  ${
                     errorMessages.numero ? "error" : ""
                   }`}
                   value={tutor.numero}
