@@ -18,3 +18,14 @@ export interface IAnimalPost {
   foto: File | undefined;
   adotado: boolean;
 }
+
+export interface IAnimalPut {
+  id: number;
+  nome: string;
+  idade: number | null;
+  tipo: string;
+  raca: string;
+  descricao: string;
+  foto: File | undefined;
+  adotado: boolean;
+}

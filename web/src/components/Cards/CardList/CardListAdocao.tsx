@@ -8,10 +8,6 @@ interface CardListProps {
 }
 
 function CardListAdocao(props: CardListProps) {
-  function onClick(id: number) {
-    console.log(id);
-  }
-
   return (
     <div className="cards-display">
       {props.animals.length === 0 ? (
@@ -19,11 +15,7 @@ function CardListAdocao(props: CardListProps) {
       ) : (
         props.animals.map((animal) => (
           <div className="card-item" key={animal.id}>
-            <Card
-              animal={animal}
-              hover={props.hover}
-              onClick={() => onClick(animal.id)}
-            />
+            <Card animal={animal} hover={props.hover} />
           </div>
         ))
       )}

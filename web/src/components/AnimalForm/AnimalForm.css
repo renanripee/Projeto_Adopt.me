@@ -89,3 +89,14 @@
   object-fit: cover;
   object-position: center center;
 }
+
+.animal-form-edit-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.animal-form-excluir {
+  color: red;
+  left: 0;
+}
