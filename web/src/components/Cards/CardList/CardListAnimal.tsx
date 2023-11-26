@@ -1,6 +1,7 @@
 import Card from "../Card/Card";
 import "./CardList.css";
 import { IAnimal } from "../../../interfaces/animal";
+import { Link } from "react-router-dom";
 
 interface CardListProps {
   animals: IAnimal[];
@@ -8,8 +9,6 @@ interface CardListProps {
 }
 
 function CardListAnimal(props: CardListProps) {
-  function onClick(id: number) {}
-
   return (
     <div className="cards-display">
       {props.animals.length === 0 ? (
@@ -17,11 +16,9 @@ function CardListAnimal(props: CardListProps) {
       ) : (
         props.animals.map((animal) => (
           <div className="card-item" key={animal.id}>
-            <Card
-              animal={animal}
-              hover={props.hover}
-              onClick={() => onClick(animal.id)}
-            />
+            <Link to={`/editar-animal/${animal.id}`}>
+              <Card animal={animal} hover={props.hover} />
+            </Link>
           </div>
         ))
       )}

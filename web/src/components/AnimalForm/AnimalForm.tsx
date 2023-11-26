@@ -4,8 +4,8 @@ import hover from "../../assets/adicionar-imagem.png";
 import { Link } from "react-router-dom";
 import { ChangeEvent, useEffect, useState } from "react";
 import listaAnimais from "../../views/Animal/animais.json";
-import { IAnimal } from "../../interfaces/animal";
-import { IAnimalPost } from "../../interfaces/animal";
+import { IAnimal, IAnimalPost, IAnimalPut } from "../../interfaces/animal";
+
 import React from "react";
 
 type AnimalFormProps = {
@@ -72,8 +72,23 @@ function AnimalForm(props: AnimalFormProps) {
     const itemEncontrado = listaAnimais.find((item) => item.id === props.id);
     if (itemEncontrado) {
       setAnimal(itemEncontrado);
+      // if (animal.foto) {
+      //   //get imagem do back
+      //   //   setFilePost(file);
+      //   //   const reader = new FileReader();
+      //   //   reader.onloadend = () => {
+      //   //     setSelectedImage(reader.result as string);
+      //   //   };
+      //   //   reader.readAsDataURL(file);
+      // }
     }
   }, [props.id]);
+
+  //provisorio, mudar na imagem la em baixo tambem
+  let animalFoto;
+  if (animal.foto) {
+    animalFoto = String(animal.foto);
+  }
 
   function handleSubmit() {
     let newErrors: AnimalErrors = {};
@@ -110,21 +125,40 @@ function AnimalForm(props: AnimalFormProps) {
     });
 
     if (Object.values(newErrors).every((value) => value === undefined)) {
-      const animalPostData = {
-        nome: animal.nome,
-        tipo: animal.tipo,
-        raca: animal.raca,
-        descricao: animal.descricao,
-        foto: filePost,
-        idade: animal.idade,
-        adotado: false,
-      };
+      let animalPostData: IAnimalPost;
+      let animalPutData: IAnimalPut;
+      if (props.id) {
+        animalPutData = {
+          id: animal.id,
+          nome: animal.nome,
+          tipo: animal.tipo,
+          raca: animal.raca,
+          descricao: animal.descricao,
+          foto: filePost,
+          idade: animal.idade,
+          adotado: false,
+        };
+        //logica de put
+        console.log("Enviando dados:", animalPutData);
+        if (animalPutData !== undefined) {
+          // window.open("/animais", "_self");
+        }
+      } else {
+        animalPostData = {
+          nome: animal.nome,
+          tipo: animal.tipo,
+          raca: animal.raca,
+          descricao: animal.descricao,
+          foto: filePost,
+          idade: animal.idade,
+          adotado: false,
+        };
 
-      console.log("Enviando dados:", animalPostData);
-
-      if (animalPostData !== undefined) {
-        //logica de post/put
-        window.open("/animais", "_self");
+        //logica de post
+        console.log("Enviando dados:", animalPostData);
+        if (animalPostData !== undefined) {
+          // window.open("/animais", "_self");
+        }
       }
     } else {
       setErrorMessages(newErrors);
@@ -168,6 +202,13 @@ function AnimalForm(props: AnimalFormProps) {
               className="animal-form-image selected"
               style={{ cursor: "pointer" }}
             />
+          ) : !selectedImage && animal.foto ? (
+            <img
+              src={animalFoto}
+              alt="hover"
+              className="animal-form-image"
+              style={{ cursor: "pointer" }}
+            />
           ) : (
             <img
               src={hover}
@@ -188,6 +229,11 @@ function AnimalForm(props: AnimalFormProps) {
             <p className="error-message">{errorMessages.foto}</p>
           </div>
         )}
+        {props.id ? (
+          <p className="tutor-form-cancel-button animal-form-excluir">
+            EXCLUIR
+          </p>
+        ) : null}
       </div>
       <div className="tutor-form-input-area">
         <div className="tutor-form-input-column">
@@ -282,10 +328,8 @@ function AnimalForm(props: AnimalFormProps) {
           <Link to="/animais" style={{ textDecoration: "none" }}>
             <p className="tutor-form-cancel-button">CANCELAR</p>
           </Link>
-
           {props.id ? (
-            <div>
-              <p className="tutor-form-cancel-button">Excluir</p>
+            <div className="animal-form-edit-buttons">
               <button
                 type="button"
                 className="login-button"
