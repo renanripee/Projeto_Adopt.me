@@ -1,25 +1,11 @@
 import Header from "../../components/Header/Header";
 import CardList from "../../components/Cards/CardList/CardListAnimal";
 import "./../Home/Home.css";
-import Image from "../../assets/killua.jpg";
 import Hover from "../../assets/hover-lapis.png";
+import { Link } from "react-router-dom";
+import animals from "../Animal/animais.json";
 
 function Home() {
-  const animals = [
-    {
-      id: 1,
-      nome: "A",
-      tipo: "CACHORRO",
-      imagem: Image,
-    },
-    {
-      id: 2,
-      nome: "B",
-      tipo: "GATO",
-      imagem: Image,
-    },
-  ];
-
   return (
     <div>
       <div className="header-component">
@@ -28,6 +14,9 @@ function Home() {
       <div className="home-content">
         <CardList animals={animals} hover={Hover} />
       </div>
+      <Link to="/novo-animal">
+        <button className="button-cadastrar-animal">ADICIONAR</button>
+      </Link>
     </div>
   );
 }

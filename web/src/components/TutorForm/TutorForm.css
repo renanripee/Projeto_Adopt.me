@@ -11,10 +11,6 @@
   justify-content: space-between;
 }
 
-.input-area-tutor-form label {
-  margin-bottom: 0.5rem;
-}
-
 .tutor-form-input-column {
   display: flex;
   flex-direction: row;
@@ -38,34 +34,35 @@
   margin-bottom: 2vh;
   margin-top: 1vh;
   font-size: 1rem;
+  font-family: Inter;
 }
 
-.nome {
-  width: 50vw;
+.nome-tutor-form {
+  width: 100%;
 }
 
-.cpf {
-  width: 21vw;
+.cpf-tutor-form {
+  width: 52%;
 }
 
-.telefone {
-  width: 26.5vw;
+.telefone-tutor-form {
+  width: 45%;
 }
 
-.cep {
-  width: 16vw;
+.cep-tutor-form {
+  width: 25%;
 }
 
-.rua {
-  width: 31.5vw;
+.rua-tutor-form {
+  width: 72%;
 }
 
-.bairro {
-  width: 41.5vw;
+.bairro-tutor-form {
+  width: 82%;
 }
 
-.numero {
-  width: 6vw;
+.numero-tutor-form {
+  width: 15%;
 }
 
 .input-area-tutor-form {
@@ -103,8 +100,12 @@ label {
   border-color: red;
 }
 
+.input-tutor-form-descricao.error {
+  border-color: red;
+}
+
 .error-message {
-  color: red;
   margin-top: -1vh;
+  color: red;
   font-size: 0.8rem;
 }
