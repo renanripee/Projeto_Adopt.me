@@ -33,8 +33,6 @@ function AnimalForm(props: AnimalFormProps) {
     adotado: false,
   });
 
-  const [animalPost, setAnimalPost] = useState<IAnimalPost>();
-
   type AnimalErrors = {
     [campo: string]: string | undefined;
   };
@@ -122,7 +120,6 @@ function AnimalForm(props: AnimalFormProps) {
         adotado: false,
       };
 
-      setAnimalPost(animalPostData);
       console.log("Enviando dados:", animalPostData);
 
       if (animalPostData !== undefined) {
@@ -137,6 +134,11 @@ function AnimalForm(props: AnimalFormProps) {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    if (name === "idade" && !Number.isInteger(Number(value))) {
+      return;
+    }
+
     setAnimal((prevAnimal) => ({
       ...prevAnimal,
       [name]: value,
@@ -154,7 +156,11 @@ function AnimalForm(props: AnimalFormProps) {
   return (
     <form className="animal-form-content">
       <div className="tutor-form-image-area">
-        <label htmlFor="fileInput" onClick={handleImageClick}>
+        <label
+          htmlFor="fileInput"
+          onClick={handleImageClick}
+          className="animal-image-container"
+        >
           {selectedImage ? (
             <img
               src={selectedImage}
@@ -222,7 +228,7 @@ function AnimalForm(props: AnimalFormProps) {
         </div>
         <div className="tutor-form-input-column">
           <div className="input-area-tutor-form raca">
-            <label>Raca</label>
+            <label>Raça</label>
             <input
               className={`input-tutor-form ${
                 errorMessages.raca ? "error" : ""
@@ -257,7 +263,7 @@ function AnimalForm(props: AnimalFormProps) {
           </div>
         </div>
         <div className="input-area-tutor-form descricao">
-          <label>Descricao</label>
+          <label>Descrição</label>
           <textarea
             className={`input-tutor-form-descricao ${
               errorMessages.descricao ? "error" : ""
@@ -278,13 +284,16 @@ function AnimalForm(props: AnimalFormProps) {
           </Link>
 
           {props.id ? (
-            <button
-              type="button"
-              className="login-button"
-              onClick={() => handleSubmit()}
-            >
-              ATUALIZAR
-            </button>
+            <div>
+              <p className="tutor-form-cancel-button">Excluir</p>
+              <button
+                type="button"
+                className="login-button"
+                onClick={() => handleSubmit()}
+              >
+                ATUALIZAR
+              </button>
+            </div>
           ) : (
             <button
               type="button"

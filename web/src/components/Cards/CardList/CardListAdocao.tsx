@@ -7,7 +7,7 @@ interface CardListProps {
   hover: string;
 }
 
-function CardList(props: CardListProps) {
+function CardListAdocao(props: CardListProps) {
   function onClick(id: number) {
     console.log(id);
   }
@@ -17,10 +17,9 @@ function CardList(props: CardListProps) {
       {props.animals.length === 0 ? (
         <p>Nenhum animal disponível para adoção.</p>
       ) : (
-        props.animals.map((animal, index) => (
-          <div className="card-item">
+        props.animals.map((animal) => (
+          <div className="card-item" key={animal.id}>
             <Card
-              key={index}
               animal={animal}
               hover={props.hover}
               onClick={() => onClick(animal.id)}
@@ -32,4 +31,4 @@ function CardList(props: CardListProps) {
   );
 }
 
-export default CardList;
+export default CardListAdocao;
