@@ -90,6 +90,15 @@ function AnimalForm(props: AnimalFormProps) {
     animalFoto = String(animal.foto);
   }
 
+  function handleDelete(id: number) {
+    //deleteAnimal(id).then(() =>
+    //logica de delete
+    //window.open("/animais", "_self"));
+    //.catch((err) => console.log(err));
+    window.open("/animais", "_self");
+    console.log(id);
+  }
+
   function handleSubmit() {
     let newErrors: AnimalErrors = {};
 
@@ -141,7 +150,7 @@ function AnimalForm(props: AnimalFormProps) {
         //logica de put
         console.log("Enviando dados:", animalPutData);
         if (animalPutData !== undefined) {
-          // window.open("/animais", "_self");
+          window.open("/animais", "_self");
         }
       } else {
         animalPostData = {
@@ -157,7 +166,7 @@ function AnimalForm(props: AnimalFormProps) {
         //logica de post
         console.log("Enviando dados:", animalPostData);
         if (animalPostData !== undefined) {
-          // window.open("/animais", "_self");
+          window.open("/animais", "_self");
         }
       }
     } else {
@@ -230,9 +239,11 @@ function AnimalForm(props: AnimalFormProps) {
           </div>
         )}
         {props.id ? (
-          <p className="tutor-form-cancel-button animal-form-excluir">
-            EXCLUIR
-          </p>
+          <div onClick={() => handleDelete(Number(props.id))}>
+            <p className="tutor-form-cancel-button animal-form-excluir">
+              EXCLUIR
+            </p>
+          </div>
         ) : null}
       </div>
       <div className="tutor-form-input-area">
