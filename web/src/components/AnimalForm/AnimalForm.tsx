@@ -4,7 +4,7 @@ import hover from "../../assets/adicionar-imagem.png";
 import { Link } from "react-router-dom";
 import { ChangeEvent, useEffect, useState } from "react";
 import listaAnimais from "../../views/Animal/animais.json";
-import { IAnimal, IAnimalPost, IAnimalPut } from "../../interfaces/animal";
+import { IAnimal, IAnimalPost } from "../../interfaces/animal";
 
 import React from "react";
 
@@ -38,8 +38,8 @@ function AnimalForm(props: AnimalFormProps) {
   };
 
   const [errorMessages, setErrorMessages] = useState<AnimalErrors>({});
+  const [filePost, setFilePost] = useState<File>(undefined as any);
   const [selectedImage, setSelectedImage] = useState<string>("");
-  const [filePost, setFilePost] = useState<File | undefined>(undefined);
   const [isImageSelected, setIsImageSelected] = useState(false);
 
   const fileInputRef = React.createRef<HTMLInputElement>();
@@ -134,8 +134,11 @@ function AnimalForm(props: AnimalFormProps) {
     });
 
     if (Object.values(newErrors).every((value) => value === undefined)) {
-      let animalPostData: IAnimalPost;
-      let animalPutData: IAnimalPut;
+      let animalPostData: any;
+      let animalPutData: any;
+
+      const formData = new FormData();
+
       if (props.id) {
         animalPutData = {
           id: animal.id,
@@ -143,14 +146,20 @@ function AnimalForm(props: AnimalFormProps) {
           tipo: animal.tipo,
           raca: animal.raca,
           descricao: animal.descricao,
-          foto: filePost,
           idade: animal.idade,
           adotado: false,
         };
+
+        formData.append("imagem", filePost);
+        formData.append("animal", animalPutData);
+
         //logica de put
-        console.log("Enviando dados:", animalPutData);
-        if (animalPutData !== undefined) {
-          window.open("/animais", "_self");
+        console.log("Enviando dados:");
+        formData.forEach((value, key) => {
+          console.log(`${key}: ${value}`);
+        });
+        if (formData !== undefined) {
+          // window.open("/animais", "_self");
         }
       } else {
         animalPostData = {
@@ -158,15 +167,20 @@ function AnimalForm(props: AnimalFormProps) {
           tipo: animal.tipo,
           raca: animal.raca,
           descricao: animal.descricao,
-          foto: filePost,
           idade: animal.idade,
           adotado: false,
         };
 
+        formData.append("imagem", filePost);
+        formData.append("animal", animalPostData);
+
         //logica de post
-        console.log("Enviando dados:", animalPostData);
-        if (animalPostData !== undefined) {
-          window.open("/animais", "_self");
+        console.log("Enviando dados:");
+        formData.forEach((value, key) => {
+          console.log(`${key}: ${value}`);
+        });
+        if (formData !== undefined) {
+          // window.open("/animais", "_self");
         }
       }
     } else {

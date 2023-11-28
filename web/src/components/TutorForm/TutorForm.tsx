@@ -21,7 +21,7 @@ const camposObrigatorios: Array<keyof ITutor> = [
 
 function TutorForm(props: TutorFormProps) {
   const [tutor, setTutor] = useState<ITutor>({
-    id: "",
+    id: 0,
     cpf: "",
     nome: "",
     telefone: "",
@@ -39,9 +39,7 @@ function TutorForm(props: TutorFormProps) {
 
   useEffect(() => {
     //get tutor
-    const itemEncontrado = listaTutores.find(
-      (item) => item.id === String(props.id)
-    );
+    const itemEncontrado = listaTutores.find((item) => item.id === props.id);
     if (itemEncontrado) {
       setTutor(itemEncontrado);
     }
@@ -69,10 +67,37 @@ function TutorForm(props: TutorFormProps) {
     }
 
     if (Object.values(newErrors).every((value) => value === undefined)) {
-      console.log("Enviando dados:", tutor);
+      let tutorPostData: any;
+      let tutorPutData: ITutor;
       tutor.telefone = formatPhone(tutor.telefone);
-      // lógica de envio (POST ou PUT) aqui
-      window.open("/tutores", "_self");
+      if (!props.id) {
+        tutorPostData = {
+          nome: tutor.nome,
+          cpf: tutor.cpf,
+          telefone: tutor.telefone,
+          cep: tutor.cep,
+          rua: tutor.rua,
+          bairro: tutor.bairro,
+          numero: tutor.numero,
+        };
+        console.log("Enviando dados:", tutorPostData);
+        //requisicao com tutorPostData
+        // window.open("/tutores", "_self");
+      } else {
+        tutorPutData = {
+          id: tutor.id,
+          nome: tutor.nome,
+          cpf: tutor.cpf,
+          telefone: tutor.telefone,
+          cep: tutor.cep,
+          rua: tutor.rua,
+          bairro: tutor.bairro,
+          numero: tutor.numero,
+        };
+        console.log("Enviando dados:", tutorPutData);
+        //requsicao com tutor
+        // window.open("/tutores", "_self");
+      }
     } else {
       setErrorMessages(newErrors);
     }

@@ -12,7 +12,7 @@ export interface IAdocao {
     adotado: boolean;
   };
   tutor: {
-    id: string;
+    id: number;
     cpf: string;
     nome: string;
     telefone: string;
@@ -21,4 +21,17 @@ export interface IAdocao {
     bairro: string;
     numero: string;
   };
+}
+
+export interface IAdocaoPost {
+  data: string;
+  id_animal: number;
+  id_tutor: number;
+}
+
+export interface IAdocaoPut {
+  id: number;
+  data: string;
+  id_animal: number;
+  id_tutor: number;
 }
