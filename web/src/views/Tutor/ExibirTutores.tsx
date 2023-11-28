@@ -17,7 +17,12 @@ function Tutores() {
         <Header navigate={true} tutores={true} />
       </div>
       <div className="tutor-content">
-        <Table columnMapping={columnMapping} data={items} />
+        <Table
+          columnMapping={columnMapping}
+          data={items}
+          tutor={true}
+          adocao={false}
+        />
       </div>
     </div>
   );

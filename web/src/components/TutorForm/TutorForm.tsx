@@ -1,5 +1,5 @@
 import "./TutorForm.css";
-import "../../components/Login/LoginButton/LoginButton.css";
+import "../Login/LoginButton/LoginButton.css";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import listaTutores from "../Table/itens.json";

@@ -7,6 +7,7 @@ import TutoresEdit from "./views/Tutor/EditarTutor";
 import Animais from "./views/Animal/ExibirAnimais";
 import AnimaisNew from "./views/Animal/CadastrarAnimal";
 import AnimaisEdit from "./views/Animal/EditarAnimal";
+import AdocaoList from "./views/Adocao/ExibirAdocoes";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
         <Route path="/animais" element={<Animais />} />
         <Route path="/novo-animal" element={<AnimaisNew />} />
         <Route path="/editar-animal/:id" element={<AnimaisEdit />} />
+        <Route path="/adocoes" element={<AdocaoList />} />
       </Routes>
     </BrowserRouter>
   );

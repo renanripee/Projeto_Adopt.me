@@ -1,9 +1,9 @@
 import Header from "../../components/Header/Header";
 import CardList from "../../components/Cards/CardList/CardListAnimal";
-import "./../Home/Home.css";
+import "../Home/Home.css";
 import Hover from "../../assets/hover-lapis.png";
 import { Link } from "react-router-dom";
-import animals from "../Animal/animais.json";
+import animals from "./animais.json";
 
 function Home() {
   return (
