@@ -1,0 +1,84 @@
+.cpf-adocao {
+  width: 75%;
+}
+.pesquisar {
+  width: 120px;
+  margin-top: 1.1vh;
+}
+
+.adopt-form-search-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.adocao-form-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border: solid 3px #005975;
+  box-shadow: 0px 4.73333px 4.73333px 0px rgba(0, 0, 0, 0.25);
+}
+
+.adocao-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.animal-form-content-2 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.baixo {
+  justify-content: center;
+  width: 100%;
+}
+
+.nome-tutor-adocao {
+  width: 54%;
+  margin-right: 4vw;
+}
+
+.telefone-tutor-adocao {
+  width: 30%;
+}
+
+.animal-form {
+  width: 100%;
+}
+
+.data-de-adocao {
+  color: #005975;
+  margin-left: 6vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.adocao-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.adocao-form-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5vw;
+}
+
+.input-data-adocao {
+  margin-top: 15px;
+  height: 18px;
+  width: 100px;
+  margin-left: 5px;
+  font-size: 1rem;
+  font-family: Inter;
+}
+
+.adocao-erro-data {
+  display: flex;
+  flex-direction: column;
+}

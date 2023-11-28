@@ -1,5 +1,5 @@
 export default interface ITutor {
-  id: string;
+  id: number;
   cpf: string;
   nome: string;
   telefone: string;
