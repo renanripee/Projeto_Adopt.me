@@ -1,6 +1,6 @@
-import Header from "../../components/Header/Header";
+import Header from "../../components/header/Header";
 import "./Animais.css";
-import AnimalForm from "../../components/AnimalForm/AnimalForm";
+import AnimalForm from "../../components/animalForm/AnimalForm";
 import { useParams } from "react-router-dom";
 
 function CadastrarAnimal() {

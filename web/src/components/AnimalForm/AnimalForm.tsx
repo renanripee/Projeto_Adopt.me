@@ -1,10 +1,10 @@
 import "./AnimalForm.css";
-import "../TutorForm/TutorForm.css";
+import "../tutorForm/TutorForm.css";
 import hover from "../../assets/adicionar-imagem.png";
 import { Link } from "react-router-dom";
 import { ChangeEvent, useEffect, useState } from "react";
-import listaAnimais from "../../views/Animal/animais.json";
-import { IAnimal, IAnimalPost, IAnimalPut } from "../../interfaces/animal";
+import listaAnimais from "../../views/animal/animais.json";
+import { IAnimal, IAnimalPost, IAnimalPut } from "../../interfaces/Animal";
 
 import React from "react";
 

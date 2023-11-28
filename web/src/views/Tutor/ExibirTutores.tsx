@@ -1,7 +1,7 @@
-import Header from "../../components/Header/Header";
-import Table from "../../components/Table/Table";
+import Header from "../../components/header/Header";
+import Table from "../../components/table/Table";
 import "./Tutores.css";
-import items from "../../components/Table/itens.json";
+import items from "../../components/table/itens.json";
 
 const columnMapping = {
   cpf: "CPF",
@@ -17,7 +17,12 @@ function Tutores() {
         <Header navigate={true} tutores={true} />
       </div>
       <div className="tutor-content">
-        <Table columnMapping={columnMapping} data={items} />
+        <Table
+          columnMapping={columnMapping}
+          data={items}
+          tutor={true}
+          adocao={false}
+        />
       </div>
     </div>
   );

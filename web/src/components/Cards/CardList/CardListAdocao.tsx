@@ -1,6 +1,6 @@
-import Card from "../Card/Card";
+import Card from "../card/Card";
 import "./CardList.css";
-import { IAnimal } from "../../../interfaces/animal";
+import { IAnimal } from "../../../interfaces/Animal";
 
 interface CardListProps {
   animals: IAnimal[];

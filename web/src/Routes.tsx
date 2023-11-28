@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./views/Login";
-import Home from "./views/Home/Principal";
-import Tutores from "./views/Tutor/ExibirTutores";
-import TutoresNew from "./views/Tutor/CadastrarTutor";
-import TutoresEdit from "./views/Tutor/EditarTutor";
-import Animais from "./views/Animal/ExibirAnimais";
-import AnimaisNew from "./views/Animal/CadastrarAnimal";
-import AnimaisEdit from "./views/Animal/EditarAnimal";
+import Home from "./views/home/Principal";
+import Tutores from "./views/tutor/ExibirTutores";
+import TutoresNew from "./views/tutor/CadastrarTutor";
+import TutoresEdit from "./views/tutor/EditarTutor";
+import Animais from "./views/animal/ExibirAnimais";
+import AnimaisNew from "./views/animal/CadastrarAnimal";
+import AnimaisEdit from "./views/animal/EditarAnimal";
+import AdocaoList from "./views/adocao/ExibirAdocoes";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
         <Route path="/animais" element={<Animais />} />
         <Route path="/novo-animal" element={<AnimaisNew />} />
         <Route path="/editar-animal/:id" element={<AnimaisEdit />} />
+        <Route path="/adocoes" element={<AdocaoList />} />
       </Routes>
     </BrowserRouter>
   );

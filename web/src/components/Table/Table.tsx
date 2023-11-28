@@ -3,12 +3,14 @@ import "./Table.css";
 import lapis from "../../assets/lapis.png";
 import lixeira from "../../assets/lixeira.png";
 import seta from "../../assets/seta-baixo.png";
-import ModalTable from "../Modals/ModalTable/ModalTable";
+import ModalTable from "../modals/modalTable/ModalTable";
 import { Link } from "react-router-dom";
 
 type TableProps = {
   data: any[];
   columnMapping: { [key: string]: string };
+  tutor: boolean;
+  adocao: boolean;
 };
 
 function Table(props: TableProps) {
@@ -32,6 +34,11 @@ function Table(props: TableProps) {
     setStartIndex((i - 1) * rowsNumber);
   }
 
+  function getNestedValue(obj: Record<string, any>, path: string): any {
+    const keys = path.split(".");
+    return keys.reduce((acc, key) => (acc && acc[key] ? acc[key] : ""), obj);
+  }
+
   function emptyRows() {
     let emptyRows = [];
     for (let i = 0; i < rowsNumberLastPage; i++) {
@@ -49,14 +56,17 @@ function Table(props: TableProps) {
   }
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState<"tutor" | "adocao" | null>(null);
   const [idDelete, setIdDelete] = useState(-1);
 
-  const openModal = (id: number) => {
+  const openModal = (id: number, isAdocao: boolean) => {
+    setModalType(isAdocao ? "adocao" : "tutor");
     setIsModalOpen(true);
     setIdDelete(id);
   };
 
   const closeModal = () => {
+    setModalType(null);
     setIsModalOpen(false);
   };
 
@@ -90,7 +100,11 @@ function Table(props: TableProps) {
                   <tr key={index}>
                     {Object.keys(props.columnMapping).map(
                       (key, columnIndex) => (
-                        <td key={columnIndex}>{item[key]}</td>
+                        <td key={columnIndex}>
+                          {key.includes(".")
+                            ? getNestedValue(item, key)
+                            : item[key]}
+                        </td>
                       )
                     )}
                     <td>
@@ -98,15 +112,27 @@ function Table(props: TableProps) {
                         src={lixeira}
                         alt="lixeira"
                         className="table-icon"
-                        onClick={() => openModal(item.id)}
+                        onClick={() => openModal(item.id, props.adocao)}
                       ></img>
-                      <Link to={`/editar-tutor/${item.id}`}>
-                        <img
-                          src={lapis}
-                          alt="lapis"
-                          className="table-icon"
-                        ></img>
-                      </Link>
+                      {props.tutor ? (
+                        <Link to={`/editar-tutor/${item.id}`}>
+                          <img
+                            src={lapis}
+                            alt="lapis"
+                            className="table-icon"
+                          ></img>
+                        </Link>
+                      ) : null}
+
+                      {props.adocao ? (
+                        <Link to={`/editar-adocao/${item.id}`}>
+                          <img
+                            src={lapis}
+                            alt="lapis"
+                            className="table-icon"
+                          ></img>
+                        </Link>
+                      ) : null}
                     </td>
                   </tr>
                 ))}
@@ -118,7 +144,11 @@ function Table(props: TableProps) {
                   <tr key={index}>
                     {Object.keys(props.columnMapping).map(
                       (key, columnIndex) => (
-                        <td key={columnIndex}>{item[key]}</td>
+                        <td key={columnIndex}>
+                          {key.includes(".")
+                            ? getNestedValue(item, key)
+                            : item[key]}
+                        </td>
                       )
                     )}
                     <td>
@@ -126,15 +156,27 @@ function Table(props: TableProps) {
                         src={lixeira}
                         alt="lixeira"
                         className="table-icon"
-                        onClick={() => openModal(item.id)}
+                        onClick={() => openModal(item.id, props.adocao)}
                       ></img>
-                      <Link to={`/editar-tutor/${item.id}`}>
-                        <img
-                          src={lapis}
-                          alt="lapis"
-                          className="table-icon"
-                        ></img>
-                      </Link>
+                      {props.tutor ? (
+                        <Link to={`/editar-tutor/${item.id}`}>
+                          <img
+                            src={lapis}
+                            alt="lapis"
+                            className="table-icon"
+                          ></img>
+                        </Link>
+                      ) : null}
+
+                      {props.adocao ? (
+                        <Link to={`/editar-adocao/${item.id}`}>
+                          <img
+                            src={lapis}
+                            alt="lapis"
+                            className="table-icon"
+                          ></img>
+                        </Link>
+                      ) : null}
                     </td>
                   </tr>
                 ))}
@@ -161,17 +203,31 @@ function Table(props: TableProps) {
             </div>
           </div>
         </div>
-        <Link to={"/novo-tutor"} className="table-add-link">
-          <span className="table-add-button">+ adicionar</span>
-        </Link>
+        {props.tutor ? (
+          <Link to={"/novo-tutor"} className="table-add-link">
+            <span className="table-add-button">+ adicionar</span>
+          </Link>
+        ) : null}
       </div>
       <div>
-        <ModalTable
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          onConfirm={handleConfirm}
-          id={idDelete}
-        />
+        {props.adocao ? (
+          <ModalTable
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            onConfirm={handleConfirm}
+            id={idDelete}
+            adocao={true}
+          />
+        ) : null}
+        {props.tutor ? (
+          <ModalTable
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            onConfirm={handleConfirm}
+            id={idDelete}
+            tutor={true}
+          />
+        ) : null}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent } from "react";
+import { FC, MouseEvent } from "react";
 import "./ModalTable.css";
 
 interface ModalProps {
@@ -6,9 +6,18 @@ interface ModalProps {
   onClose: () => void;
   onConfirm: () => void;
   id: number;
+  tutor?: boolean;
+  adocao?: boolean;
 }
 
-const ModalTable: FC<ModalProps> = ({ isOpen, onClose, onConfirm, id }) => {
+const ModalTable: FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  onConfirm,
+  id,
+  tutor,
+  adocao,
+}) => {
   const handleCancel = () => {
     onClose();
   };
@@ -16,8 +25,14 @@ const ModalTable: FC<ModalProps> = ({ isOpen, onClose, onConfirm, id }) => {
   const handleConfirmAction = () => {
     onConfirm();
     onClose();
-    console.log(id);
-    //metodo delete;
+    if (adocao) {
+      //metodo delete
+      console.log("adocao" + id);
+    }
+    if (tutor) {
+      //metodo delete
+      console.log("tutor" + id);
+    }
   };
 
   const handleOverlayClick = (e: MouseEvent) => {

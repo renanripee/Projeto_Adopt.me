@@ -1,9 +1,9 @@
 import "./TutorForm.css";
-import "../../components/Login/LoginButton/LoginButton.css";
+import "../login/loginButton/LoginButton.css";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import listaTutores from "../Table/itens.json";
-import ITutor from "../../interfaces/tutor";
+import listaTutores from "../table/itens.json";
+import ITutor from "../../interfaces/Tutor";
 
 type TutorFormProps = {
   id?: number;
