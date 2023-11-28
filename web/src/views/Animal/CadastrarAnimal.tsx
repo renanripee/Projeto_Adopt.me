@@ -1,6 +1,6 @@
-import Header from "../../components/header/Header";
+import Header from "../../components/Header/Header";
 import "./Animais.css";
-import AnimalForm from "../../components/animalForm/AnimalForm";
+import AnimalForm from "../../components/AnimalForm/AnimalForm";
 
 function CadastrarAnimal() {
   return (

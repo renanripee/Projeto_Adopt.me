@@ -1,5 +1,5 @@
-import Header from "../../components/header/Header";
-import TutorForm from "../../components/tutorForm/TutorForm";
+import Header from "../../components/Header/Header";
+import TutorForm from "../../components/TutorForm/TutorForm";
 import { useParams } from "react-router-dom";
 
 function EditTutor() {

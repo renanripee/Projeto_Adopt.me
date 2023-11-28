@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Card.css";
-import { IAnimal } from "../../../interfaces/Animal";
+import { IAnimal } from "../../../interfaces/animal";
 
 type CardProps = {
   animal: IAnimal;

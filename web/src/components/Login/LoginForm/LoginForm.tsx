@@ -1,5 +1,5 @@
-import LoginButton from "../loginButton/LoginButton";
-import LoginInput from "../loginInput/LoginInput";
+import LoginButton from "../LoginButton/LoginButton";
+import LoginInput from "../LoginInput/LoginInput";
 import "./LoginForm.css";
 import womanImage from "../../../assets/mulher.png";
 import adoptImage from "../../../assets/Group 1.png";

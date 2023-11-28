@@ -3,7 +3,7 @@ import "./Table.css";
 import lapis from "../../assets/lapis.png";
 import lixeira from "../../assets/lixeira.png";
 import seta from "../../assets/seta-baixo.png";
-import ModalTable from "../modals/modalTable/ModalTable";
+import ModalTable from "../Modals/ModalTable/ModalTable";
 import { Link } from "react-router-dom";
 
 type TableProps = {

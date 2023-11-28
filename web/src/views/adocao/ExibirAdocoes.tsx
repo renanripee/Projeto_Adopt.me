@@ -1,5 +1,5 @@
-import Table from "../../components/table/Table";
-import Header from "../../components/header/Header";
+import Table from "../../components/Table/Table";
+import Header from "../../components/Header/Header";
 import adocaoList from "./adocao.json";
 
 const columnMapping = {

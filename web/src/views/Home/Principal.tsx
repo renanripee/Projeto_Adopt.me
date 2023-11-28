@@ -1,6 +1,6 @@
-import Header from "../../components/header/Header";
-import CardList from "../../components/cards/cardList/CardListAdocao";
-import animal from "../animal/animais.json";
+import Header from "../../components/Header/Header";
+import CardList from "../../components/Cards/CardList/CardListAdocao";
+import animal from "../Animal/animais.json";
 import Hover from "../../assets/hover.png";
 import "./Home.css";
 
