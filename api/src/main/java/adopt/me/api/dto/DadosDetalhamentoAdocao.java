@@ -1,9 +1,8 @@
-package adopt.me.api.domain.adocao;
+package adopt.me.api.dto;
 
 import java.time.LocalDateTime;
 
-import adopt.me.api.domain.animal.DadosDetalhamentoAnimal;
-import adopt.me.api.domain.tutor.DadosDetalhamentoTutor;
+import adopt.me.api.model.Adocao;
 
 public record DadosDetalhamentoAdocao(
     int id,

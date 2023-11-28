@@ -1,14 +1,17 @@
-package adopt.me.api.domain.adocao;
+package adopt.me.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import adopt.me.api.domain.animal.AnimalRepository;
-import adopt.me.api.domain.tutor.TutorRepository;
+import adopt.me.api.dto.DadosCadastroAdocao;
+import adopt.me.api.model.Adocao;
+import adopt.me.api.persistence.AdocaoRepository;
+import adopt.me.api.persistence.AnimalRepository;
+import adopt.me.api.persistence.TutorRepository;
 import jakarta.validation.ValidationException;
 
 @Service
-public class AdocaoDeAnimais {
+public class AdocaoService {
 
     @Autowired
     private AdocaoRepository adocaoRepository;

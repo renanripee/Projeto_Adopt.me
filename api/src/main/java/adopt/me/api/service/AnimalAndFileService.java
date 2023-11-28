@@ -1,4 +1,4 @@
-package adopt.me.api.infra.file;
+package adopt.me.api.service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import adopt.me.api.domain.animal.Animal;
-import adopt.me.api.domain.animal.AnimalRepository;
-import adopt.me.api.domain.animal.DadosCadastroAnimal;
+import adopt.me.api.dto.DadosCadastroAnimal;
+import adopt.me.api.model.Animal;
+import adopt.me.api.persistence.AnimalRepository;
 
 @Service
 public class AnimalAndFileService {

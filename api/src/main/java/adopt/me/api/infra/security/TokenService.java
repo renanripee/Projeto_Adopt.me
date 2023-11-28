@@ -12,7 +12,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
-import adopt.me.api.domain.usuario.Usuario;
+import adopt.me.api.model.Usuario;
 
 @Service
 public class TokenService {

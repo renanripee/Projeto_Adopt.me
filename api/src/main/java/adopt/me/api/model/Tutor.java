@@ -1,6 +1,7 @@
-package adopt.me.api.domain.tutor;
+package adopt.me.api.model;
 
-import adopt.me.api.domain.endereco.Endereco;
+import adopt.me.api.dto.DadosCadastroTutor;
+import adopt.me.api.dto.DadosEdicaoTutor;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

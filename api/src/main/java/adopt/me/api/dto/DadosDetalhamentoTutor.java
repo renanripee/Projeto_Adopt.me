@@ -1,6 +1,7 @@
-package adopt.me.api.domain.tutor;
+package adopt.me.api.dto;
 
-import adopt.me.api.domain.endereco.Endereco;
+import adopt.me.api.model.Endereco;
+import adopt.me.api.model.Tutor;
 
 public record DadosDetalhamentoTutor(
         

@@ -1,5 +1,6 @@
-package adopt.me.api.domain.endereco;
+package adopt.me.api.model;
 
+import adopt.me.api.dto.DadosEndereco;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

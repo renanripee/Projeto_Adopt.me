@@ -1,4 +1,4 @@
-package adopt.me.api.domain.adocao;
+package adopt.me.api.dto;
 
 import java.time.LocalDateTime;
 

@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import adopt.me.api.domain.usuario.UsuarioService;
+import adopt.me.api.service.UsuarioService;
 
 @SpringBootApplication
 public class ApiApplication {

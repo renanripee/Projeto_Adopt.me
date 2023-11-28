@@ -1,9 +1,11 @@
-package adopt.me.api.domain.usuario;
+package adopt.me.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import adopt.me.api.model.Usuario;
+import adopt.me.api.persistence.UsuarioRepository;
 import jakarta.transaction.Transactional;
 
 @Service

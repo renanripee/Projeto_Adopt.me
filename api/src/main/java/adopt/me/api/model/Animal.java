@@ -1,5 +1,7 @@
-package adopt.me.api.domain.animal;
+package adopt.me.api.model;
 
+import adopt.me.api.dto.DadosCadastroAnimal;
+import adopt.me.api.dto.DadosEdicaoAnimal;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

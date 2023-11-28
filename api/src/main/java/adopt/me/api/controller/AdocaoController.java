@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import adopt.me.api.domain.adocao.AdocaoDeAnimais;
-import adopt.me.api.domain.adocao.AdocaoRepository;
-import adopt.me.api.domain.adocao.DadosCadastroAdocao;
-import adopt.me.api.domain.adocao.DadosDetalhamentoAdocao;
-import adopt.me.api.domain.adocao.DadosEdicaoAdocao;
+import adopt.me.api.dto.DadosCadastroAdocao;
+import adopt.me.api.dto.DadosDetalhamentoAdocao;
+import adopt.me.api.dto.DadosEdicaoAdocao;
+import adopt.me.api.persistence.AdocaoRepository;
+import adopt.me.api.service.AdocaoService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -28,7 +28,7 @@ public class AdocaoController {
     @Autowired
     private AdocaoRepository repository;
     @Autowired
-    private AdocaoDeAnimais service;
+    private AdocaoService service;
 
     @PostMapping
     @Transactional

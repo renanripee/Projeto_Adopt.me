@@ -1,9 +1,8 @@
-package adopt.me.api.domain.adocao;
+package adopt.me.api.model;
 
 import java.time.LocalDateTime;
 
-import adopt.me.api.domain.animal.Animal;
-import adopt.me.api.domain.tutor.Tutor;
+import adopt.me.api.dto.DadosEdicaoAdocao;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;

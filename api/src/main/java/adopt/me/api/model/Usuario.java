@@ -1,4 +1,4 @@
-package adopt.me.api.domain.usuario;
+package adopt.me.api.model;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,4 +1,6 @@
-package adopt.me.api.domain.animal;
+package adopt.me.api.dto;
+
+import adopt.me.api.model.Animal;
 
 public record DadosDetalhamentoAnimal(
         

@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import adopt.me.api.domain.usuario.DadosAutenticacao;
-import adopt.me.api.domain.usuario.Usuario;
+import adopt.me.api.dto.DadosAutenticacao;
 import adopt.me.api.infra.security.DadosTokenJWT;
 import adopt.me.api.infra.security.TokenService;
+import adopt.me.api.model.Usuario;
 
 @RestController
 @RequestMapping("/login")

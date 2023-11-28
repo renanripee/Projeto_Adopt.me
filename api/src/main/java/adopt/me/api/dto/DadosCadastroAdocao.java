@@ -1,9 +1,10 @@
-package adopt.me.api.domain.adocao;
+package adopt.me.api.dto;
 
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import adopt.me.api.model.Adocao;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroAdocao(

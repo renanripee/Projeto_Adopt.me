@@ -1,4 +1,4 @@
-package adopt.me.api.domain.animal;
+package adopt.me.api.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

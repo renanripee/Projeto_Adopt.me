@@ -1,10 +1,12 @@
-package adopt.me.api.domain.usuario;
+package adopt.me.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import adopt.me.api.persistence.UsuarioRepository;
 
 @Service
 public class AutenticationService implements UserDetailsService{

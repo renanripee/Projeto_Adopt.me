@@ -1,3 +1,3 @@
-package adopt.me.api.domain.usuario;
+package adopt.me.api.dto;
 
 public record DadosAutenticacao (String usuario, String senha){}

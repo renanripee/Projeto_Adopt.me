@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import adopt.me.api.domain.animal.Animal;
-import adopt.me.api.domain.animal.AnimalRepository;
-import adopt.me.api.domain.animal.DadosCadastroAnimal;
-import adopt.me.api.domain.animal.DadosDetalhamentoAnimal;
-import adopt.me.api.domain.animal.DadosEdicaoAnimal;
-import adopt.me.api.infra.file.AnimalAndFileService;
+import adopt.me.api.dto.DadosCadastroAnimal;
+import adopt.me.api.dto.DadosDetalhamentoAnimal;
+import adopt.me.api.dto.DadosEdicaoAnimal;
+import adopt.me.api.model.Animal;
+import adopt.me.api.persistence.AnimalRepository;
+import adopt.me.api.service.AnimalAndFileService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
