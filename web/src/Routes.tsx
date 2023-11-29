@@ -7,9 +7,9 @@ import TutoresEdit from "./views/Tutor/EditarTutor";
 import Animais from "./views/Animal/ExibirAnimais";
 import AnimaisNew from "./views/Animal/CadastrarAnimal";
 import AnimaisEdit from "./views/Animal/EditarAnimal";
-import Adocao from "./views/Adocao/ExibirAdocoes";
-import AdocaoEdit from "./views/Adocao/EditarAdocao";
-import AdocaoNew from "./views/Adocao/CadastrarAdocao";
+import Adocao from "./views/adocao/ExibirAdocoes";
+import AdocaoEdit from "./views/adocao/EditarAdocao";
+import AdocaoNew from "./views/adocao/CadastrarAdocao";
 
 const AppRoutes = () => {
   return (

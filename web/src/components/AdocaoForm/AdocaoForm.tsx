@@ -5,7 +5,7 @@ import "../AnimalForm/AnimalForm.css";
 import "../TutorForm/TutorForm.css";
 import "../Login/LoginButton/LoginButton.css";
 import { Link } from "react-router-dom";
-import adocaoList from "../../views/Adocao/adocao.json";
+import adocaoList from "../../views/adocao/adocao.json";
 import animaisList from "../../views/Animal/animais.json";
 import tutorList from "../Table/itens.json";
 import ModalAdocao from "../Modals/ModalAdocao/ModalAdocao";
