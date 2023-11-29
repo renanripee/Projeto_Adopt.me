@@ -1,7 +1,7 @@
 package api.dto;
 
-import api.model.Endereco;
-import api.model.Tutor;
+import api.model.tutor.Endereco;
+import api.model.tutor.Tutor;
 
 public record DadosDetalhamentoTutor(
         

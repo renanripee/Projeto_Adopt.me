@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import api.dto.DadosCadastroTutor;
 import api.dto.DadosDetalhamentoTutor;
 import api.dto.DadosEdicaoTutor;
-import api.model.Tutor;
+import api.model.tutor.Tutor;
 import api.persistence.TutorRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

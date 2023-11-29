@@ -1,4 +1,4 @@
-package api.model;
+package api.model.tutor;
 
 import api.dto.DadosEndereco;
 import jakarta.persistence.Embeddable;
