@@ -108,7 +108,7 @@ Projeto_Adopt.me/
 - Se necessário, usar comentários para explicar por que o código está fazendo algo específico. No entanto, a meta é escrever código que seja autoexplicativo, minimizando a necessidade de comentários.
 - Evitar repetição de código. A duplicação pode levar a erros e tornar o código mais difícil de manter.
 - Organizar o código de uma maneira lógica, com funções relacionadas agrupadas e conceitos relacionados próximos uns dos outros.
-- Nos diretórios "api" e "web" nomear os arquivos iniciando com letra maiúscula e as pastas com letra minúscula.
+- Nos diretórios "api" e "web" nomear os arquivos iniciando com letra maiúscula e as pastas com letra minúscula, exceto aqueles que possuam formatação padrão especificada.
 
 ## Desenvolvedores
 
