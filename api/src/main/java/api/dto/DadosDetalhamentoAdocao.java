@@ -1,12 +1,12 @@
 package api.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import api.model.Adocao;
 
 public record DadosDetalhamentoAdocao(
     int id,
-    LocalDateTime data,
+    LocalDate data,
     DadosDetalhamentoAnimal animal,
     DadosDetalhamentoTutor tutor
     ){

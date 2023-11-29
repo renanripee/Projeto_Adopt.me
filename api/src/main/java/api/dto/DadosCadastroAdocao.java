@@ -1,6 +1,6 @@
 package api.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -14,8 +14,8 @@ public record DadosCadastroAdocao(
     @NotNull
     int id_animal,
     @NotNull
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    LocalDateTime data){
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    LocalDate data){
 
         public DadosCadastroAdocao(Adocao adocao){
             this(adocao.getId(), adocao.getTutor().getId(), adocao.getAnimal().getId(), adocao.getData());

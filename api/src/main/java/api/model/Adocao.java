@@ -1,8 +1,9 @@
 package api.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import api.dto.DadosEdicaoAdocao;
+import api.model.tutor.Tutor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Adocao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalDateTime data;
+    private LocalDate data;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tutor")

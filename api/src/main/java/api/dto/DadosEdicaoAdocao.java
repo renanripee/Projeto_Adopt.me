@@ -1,6 +1,6 @@
 package api.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -9,6 +9,6 @@ import jakarta.validation.constraints.NotNull;
 public record DadosEdicaoAdocao(
     @NotNull
     int id,
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    LocalDateTime data){
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    LocalDate data){
 }
