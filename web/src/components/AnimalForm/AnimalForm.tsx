@@ -3,7 +3,7 @@ import "../TutorForm/TutorForm.css";
 import hover from "../../assets/adicionar-imagem.png";
 import { Link } from "react-router-dom";
 import { ChangeEvent, useEffect, useState } from "react";
-import listaAnimais from "../../views/animal/animais.json";
+import listaAnimais from "../../views/Animal/animais.json";
 import { IAnimal, IAnimalPost } from "../../interfaces/animal";
 
 import React from "react";

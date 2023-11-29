@@ -1,6 +1,6 @@
 import Header from "../../components/Header/Header";
 import CardList from "../../components/Cards/CardList/CardListAnimal";
-import "../home/Home.css";
+import "../Home/Home.css";
 import Hover from "../../assets/hover-lapis.png";
 import { Link } from "react-router-dom";
 import animals from "./animais.json";
