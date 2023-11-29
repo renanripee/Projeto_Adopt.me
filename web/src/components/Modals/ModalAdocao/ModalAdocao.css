@@ -1,0 +1,11 @@
+.adocao-modal {
+  padding-right: 2vw;
+  justify-content: end;
+}
+
+.adocao-modal-buttons {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}

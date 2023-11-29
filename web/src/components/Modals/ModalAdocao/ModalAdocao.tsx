@@ -1,28 +1,13 @@
 import { FC, MouseEvent } from "react";
-import "./ModalTable.css";
+import "../ModalTable/ModalTable.css";
 
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  id: number;
-  tutor?: boolean;
-  adocao?: boolean;
 }
 
-const ModalTable: FC<ModalProps> = ({ isOpen, onClose, id, tutor, adocao }) => {
-  const handleCancel = () => {
-    onClose();
-  };
-
+const ModalTable: FC<ModalProps> = ({ isOpen, onClose }) => {
   const handleConfirmAction = () => {
-    if (adocao) {
-      //metodo delete
-      console.log("adocao" + id);
-    }
-    if (tutor) {
-      //metodo delete
-      console.log("tutor" + id);
-    }
     onClose();
   };
 
@@ -37,11 +22,11 @@ const ModalTable: FC<ModalProps> = ({ isOpen, onClose, id, tutor, adocao }) => {
       {isOpen && (
         <div className="modal-overlay" onClick={handleOverlayClick}>
           <div className="modal-content">
-            <p className="modal-text">Deseja mesmo excluir este item?</p>
-            <div className="modal-buttons">
-              <p className="modal-button-cancel" onClick={handleCancel}>
-                Cancelar
-              </p>
+            <p className="modal-text">
+              Ops! O tutor não está cadastrado no banco de dados.
+            </p>
+
+            <div className="adocao-modal-buttons">
               <p className="modal-button-confirm" onClick={handleConfirmAction}>
                 Confirmar
               </p>

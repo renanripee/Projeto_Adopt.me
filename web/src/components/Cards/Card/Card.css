@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 20vw;
-  height: 42vh;
+  width: 300px;
+  height: 300px;
   border: 3px solid #005975;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -12,8 +12,8 @@
 }
 
 .card-image img {
-  width: 20vw;
-  height: 42vh;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
   position: absolute;
 }
@@ -32,8 +32,8 @@
   top: 0;
   left: 0;
   margin-left: -0.5vh;
-  width: 20.5vw;
-  height: 43.2vh;
+  width: 310px;
+  height: 310px;
   overflow: hidden;
 }
 
@@ -46,8 +46,8 @@
   position: absolute;
   align-content: flex-end;
   bottom: 0px;
-  width: 20vw;
-  height: 15vh;
+  width: 300px;
+  height: 100px;
   z-index: 1;
 }
 
@@ -55,8 +55,8 @@
   position: absolute;
   align-content: flex-end;
   bottom: 0px;
-  width: 20vw;
-  height: 15vh;
+  width: 300px;
+  height: 100px;
   background: rgba(0, 0, 0, 0.4);
 }
 
@@ -73,8 +73,9 @@
   margin-top: 1vh;
   margin-bottom: 0;
   font-weight: 700;
-  font-size: 3rem;
+  font-size: 2rem;
 }
+
 .card-animal-type {
   color: white;
   margin-top: 0;

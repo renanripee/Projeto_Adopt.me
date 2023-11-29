@@ -1,5 +1,7 @@
 import Header from "../../components/Header/Header";
-import CardList from "../../components/Cards/CardList/CardList";
+import CardList from "../../components/Cards/CardList/CardListAdocao";
+import animal from "../Animal/animais.json";
+import Hover from "../../assets/hover.png";
 import "./Home.css";
 
 function Home() {
@@ -12,7 +14,7 @@ function Home() {
         <div className="title-home-page">
           <h1>ANIMAIS DISPONÍVEIS PARA ADOÇÃO</h1>
         </div>
-        <CardList />
+        <CardList animals={animal} hover={Hover} />
       </div>
     </div>
   );

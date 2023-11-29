@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "data": "02/10/2020",
+    "tutor": {
+      "id": 2,
+      "cpf": "123123125",
+      "nome": "Bob",
+      "telefone": "(11)23452-6789",
+      "cep": "12345678",
+      "rua": "Rua 2",
+      "bairro": "bairro",
+      "numero": "12"
+    },
+    "animal": {
+      "id": 1,
+      "nome": "rex",
+      "idade": 12,
+      "tipo": "CACHORRO",
+      "raca": "PITBULL",
+      "descricao": "Cachorro muito bravo",
+      "foto": "https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2023/09/11/1161338360-raposa-do-artico-pequena.jpg",
+      "adotado": false
+    }
+  },
+  {
+    "id": 2,
+    "data": "02/10/2020",
+    "tutor": {
+      "id": 2,
+      "cpf": "123123125",
+      "nome": "Rafael",
+      "telefone": "(11)23452-6789",
+      "cep": "12345678",
+      "rua": "Rua 2",
+      "bairro": "bairro",
+      "numero": "12"
+    },
+    "animal": {
+      "id": 2,
+      "nome": "jonas",
+      "idade": 12,
+      "tipo": "CACHORRO",
+      "raca": "PITBULL",
+      "descricao": "Cachorro muito bravo",
+      "foto": "https://www.petz.com.br/blog/wp-content/uploads/2022/06/animais-selvagens-3-1280x720.jpg",
+      "adotado": false
+    }
+  }
+]

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./LoginButton.css";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -11,7 +10,6 @@ function LoginButton(props: LoginButtonProps) {
   const [autenticado, setAutenticado] = useState(false);
 
   const realizarLogin = () => {
-    //validar usuario depois
     setAutenticado(true);
   };
 
