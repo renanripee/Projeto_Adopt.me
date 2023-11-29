@@ -13,6 +13,8 @@
 .modal-text {
   font-weight: 800;
   margin: 2vh 1vw 5vh 1vw;
+  text-wrap: wrap;
+  text-align: left;
 }
 
 .modal-content {

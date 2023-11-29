@@ -1,4 +1,4 @@
-export default interface ITutor {
+export interface ITutor {
   id: number;
   cpf: string;
   nome: string;
