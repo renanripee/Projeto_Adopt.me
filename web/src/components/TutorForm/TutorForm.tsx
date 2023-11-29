@@ -3,7 +3,7 @@ import "../Login/LoginButton/LoginButton.css";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import listaTutores from "../Table/itens.json";
-import ITutor from "../../interfaces/tutor";
+import { ITutor } from "../../interfaces/tutor";
 
 type TutorFormProps = {
   id?: number;
@@ -38,7 +38,7 @@ function TutorForm(props: TutorFormProps) {
   const [errorMessages, setErrorMessages] = useState<TutorErrors>({});
 
   useEffect(() => {
-    //get tutor
+    //get tutor by id
     const itemEncontrado = listaTutores.find((item) => item.id === props.id);
     if (itemEncontrado) {
       setTutor(itemEncontrado);

@@ -1,6 +1,7 @@
 import Card from "../Card/Card";
 import "./CardList.css";
 import { IAnimal } from "../../../interfaces/animal";
+import { Link } from "react-router-dom";
 
 interface CardListProps {
   animals: IAnimal[];
@@ -15,7 +16,9 @@ function CardListAdocao(props: CardListProps) {
       ) : (
         props.animals.map((animal) => (
           <div className="card-item" key={animal.id}>
-            <Card animal={animal} hover={props.hover} />
+            <Link to={`/nova-adocao/${animal.id}`}>
+              <Card animal={animal} hover={props.hover} />
+            </Link>
           </div>
         ))
       )}

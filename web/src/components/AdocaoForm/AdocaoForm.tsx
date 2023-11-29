@@ -6,9 +6,13 @@ import "../TutorForm/TutorForm.css";
 import "../Login/LoginButton/LoginButton.css";
 import { Link } from "react-router-dom";
 import adocaoList from "../../views/adocao/adocao.json";
+import animaisList from "../../views/Animal/animais.json";
+import tutorList from "../../components/Table/itens.json";
+import ModalAdocao from "../Modals/ModalAdocao/ModalAdocao";
 
 type AdocaoFormProps = {
   id?: number;
+  id_animal?: number;
 };
 
 function AdocaoForm(props: AdocaoFormProps) {
@@ -17,12 +21,14 @@ function AdocaoForm(props: AdocaoFormProps) {
   };
 
   const [errorMessages, setErrorMessages] = useState<AdocaoErrors>({});
+  const [cpf, setCpf] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [adocao, setAdocao] = useState<IAdocao>({
     id: 0,
     data: "",
     tutor: {
-      id: 0,
+      id: -1,
       nome: "",
       cpf: "",
       telefone: "",
@@ -44,11 +50,26 @@ function AdocaoForm(props: AdocaoFormProps) {
   });
 
   useEffect(() => {
-    const itemEncontrado = adocaoList.find((item) => item.id === props.id);
-    if (itemEncontrado) {
-      setAdocao(itemEncontrado);
+    if (props.id_animal) {
+      const itemEncontrado = animaisList.find(
+        (item) => item.id === props.id_animal
+      );
+      if (itemEncontrado) {
+        setAdocao({
+          ...adocao,
+          animal: itemEncontrado,
+        });
+        console.log(adocao);
+        return;
+      }
     }
-  }, [props.id]);
+    if (props.id) {
+      const itemEncontrado = adocaoList.find((item) => item.id === props.id);
+      if (itemEncontrado) {
+        setAdocao(itemEncontrado);
+      }
+    }
+  }, []);
 
   function handleSubmit() {
     let newErrors: AdocaoErrors = {};
@@ -57,38 +78,76 @@ function AdocaoForm(props: AdocaoFormProps) {
       newErrors.data = "* Peencha a data corretamente.";
     }
 
+    if (adocao.tutor.id === -1) {
+      newErrors.cpf = "* Pesquise um tutor válido.";
+    }
+
     if (Object.values(newErrors).every((value) => value === undefined)) {
       let adocaoPostData: IAdocaoPost;
       let adocaoPutData: IAdocaoPut;
 
-      adocao.data = adocao.data + " 00:00";
-
-      if (!props.id) {
-        adocaoPostData = {
-          data: adocao.data,
-          id_animal: adocao.animal.id,
-          id_tutor: adocao.tutor.id,
-        };
-        console.log("Enviando dados:", adocaoPostData);
-        // post
-        // window.open("/adocoes", "_self");
-      } else {
-        adocaoPutData = {
-          id: adocao.id,
-          data: adocao.data,
-          id_animal: adocao.animal.id,
-          id_tutor: adocao.tutor.id,
-        };
-        console.log("Enviando dados:", adocaoPutData);
-        // put
-        // window.open("/adocoes", "_self");
+      if (adocao.tutor.id !== -1) {
+        adocao.data = formatData(adocao.data);
+        if (!props.id) {
+          adocaoPostData = {
+            data: adocao.data,
+            id_animal: adocao.animal.id,
+            id_tutor: adocao.tutor.id,
+          };
+          console.log("Enviando dados:", adocaoPostData);
+          // post
+          // window.open("/adocoes", "_self");
+        } else {
+          adocaoPutData = {
+            id: adocao.id,
+            data: adocao.data,
+            id_animal: adocao.animal.id,
+            id_tutor: adocao.tutor.id,
+          };
+          console.log("Enviando dados:", adocaoPutData);
+          // put
+          // window.open("/adocoes", "_self");
+        }
       }
     } else {
       setErrorMessages(newErrors);
     }
   }
 
-  function handleSearch() {}
+  function handleSearch() {
+    //get tutor by cpf (e.target.value)
+    //if (tutorEncontrado) {
+    //setAdocao({ ...adocao, tutor: tutorEncontrado });
+    //} else {
+    // open modal
+    //}
+    console.log(cpf);
+
+    const itemEncontrado = tutorList.find((item) => item.cpf === cpf);
+    console.log(itemEncontrado);
+
+    if (itemEncontrado) {
+      setAdocao({
+        ...adocao,
+        tutor: {
+          id: itemEncontrado.id,
+          nome: itemEncontrado.nome,
+          cpf: itemEncontrado.cpf,
+          telefone: itemEncontrado.telefone,
+          numero: itemEncontrado.numero,
+          rua: itemEncontrado.rua,
+          bairro: itemEncontrado.bairro,
+          cep: itemEncontrado.cep,
+        },
+      });
+    } else {
+      setIsModalOpen(true);
+    }
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -97,6 +156,29 @@ function AdocaoForm(props: AdocaoFormProps) {
       ...prevAdocao,
       data: name === "data" ? formatData(value) : value,
     }));
+  };
+
+  function formatCPF(value: string) {
+    const cleanedValue = value.replace(/\D/g, "");
+    const formattedValue = cleanedValue.replace(
+      /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
+      "$1.$2.$3-$4"
+    );
+
+    return formattedValue;
+  }
+  function unformatCPF(formattedValue: string): string {
+    const cleanedValue = formattedValue.replace(/\D/g, "");
+    const unformattedValue = cleanedValue.replace(
+      /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
+      "$1$2$3$4"
+    );
+
+    return unformattedValue;
+  }
+
+  const handleCpfChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCpf(unformatCPF(e.target.value));
   };
 
   function formatData(valor: string) {
@@ -178,9 +260,15 @@ function AdocaoForm(props: AdocaoFormProps) {
                 <input
                   className="input-tutor-form cpf-adocao"
                   type="text"
-                  value={adocao.tutor.cpf}
+                  value={
+                    !props.id_animal
+                      ? formatCPF(adocao.tutor.cpf)
+                      : formatCPF(cpf)
+                  }
                   name="nome"
                   disabled={props.id !== undefined}
+                  onChange={handleCpfChange}
+                  maxLength={14}
                 />
                 {!props.id ? (
                   <button
@@ -192,6 +280,7 @@ function AdocaoForm(props: AdocaoFormProps) {
                   </button>
                 ) : null}
               </div>
+              <p className="error-message">{errorMessages.cpf}</p>
             </div>
           </div>
         </div>
@@ -240,7 +329,7 @@ function AdocaoForm(props: AdocaoFormProps) {
               </div>
             </div>
             <div className="adocao-form-buttons">
-              <Link to="/adocoes" style={{ textDecoration: "none" }}>
+              <Link to="/home" style={{ textDecoration: "none" }}>
                 <p className="tutor-form-cancel-button">CANCELAR</p>
               </Link>
               {props.id ? (
@@ -266,6 +355,7 @@ function AdocaoForm(props: AdocaoFormProps) {
           </div>
         </div>
       </div>
+      <ModalAdocao isOpen={isModalOpen} onClose={closeModal} />
     </form>
   );
 }

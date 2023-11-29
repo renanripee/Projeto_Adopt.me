@@ -70,10 +70,6 @@ function Table(props: TableProps) {
     setIsModalOpen(false);
   };
 
-  const handleConfirm = () => {
-    console.log("confirm");
-  };
-
   return (
     <div className="table-content">
       <div>
@@ -214,7 +210,6 @@ function Table(props: TableProps) {
           <ModalTable
             isOpen={isModalOpen}
             onClose={closeModal}
-            onConfirm={handleConfirm}
             id={idDelete}
             adocao={true}
           />
@@ -223,7 +218,6 @@ function Table(props: TableProps) {
           <ModalTable
             isOpen={isModalOpen}
             onClose={closeModal}
-            onConfirm={handleConfirm}
             id={idDelete}
             tutor={true}
           />

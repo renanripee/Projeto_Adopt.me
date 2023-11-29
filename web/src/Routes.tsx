@@ -9,6 +9,7 @@ import AnimaisNew from "./views/Animal/CadastrarAnimal";
 import AnimaisEdit from "./views/Animal/EditarAnimal";
 import Adocao from "./views/adocao/ExibirAdocoes";
 import AdocaoEdit from "./views/adocao/EditarAdocao";
+import AdocaoNew from "./views/adocao/CadastrarAdocao";
 
 const AppRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const AppRoutes = () => {
         <Route path="/editar-animal/:id" element={<AnimaisEdit />} />
         <Route path="/adocoes" element={<Adocao />} />
         <Route path="/editar-adocao/:id" element={<AdocaoEdit />} />
+        <Route path="/nova-adocao/:id" element={<AdocaoNew />} />
       </Routes>
     </BrowserRouter>
   );
