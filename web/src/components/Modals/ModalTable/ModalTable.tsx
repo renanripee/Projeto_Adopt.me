@@ -1,5 +1,7 @@
 import { FC, MouseEvent } from "react";
 import "./ModalTable.css";
+import { deleteTutor } from "../../../services/tutor";
+import { useAuth } from "../../../context/AuthContext";
 
 interface ModalProps {
   isOpen: boolean;
@@ -10,6 +12,7 @@ interface ModalProps {
 }
 
 const ModalTable: FC<ModalProps> = ({ isOpen, onClose, id, tutor, adocao }) => {
+  const token = useAuth();
   const handleCancel = () => {
     onClose();
   };
@@ -20,8 +23,14 @@ const ModalTable: FC<ModalProps> = ({ isOpen, onClose, id, tutor, adocao }) => {
       console.log("adocao" + id);
     }
     if (tutor) {
-      //metodo delete
-      console.log("tutor" + id);
+      deleteTutor(String(token.token), id)
+        .then((response) => {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
     }
     onClose();
   };

@@ -8,3 +8,16 @@ export interface ITutor {
   bairro: string;
   numero: string;
 }
+
+export interface ITutorForm {
+  id: number;
+  cpf: string;
+  nome: string;
+  telefone: string;
+  endereco: {
+    cep: string;
+    rua: string;
+    bairro: string;
+    numero: string;
+  };
+}

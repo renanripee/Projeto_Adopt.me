@@ -14,6 +14,10 @@ function Card(props: CardProps) {
     return props.animal.foto;
   }
 
+  // function getImage() {
+  //   return "http://localhost:8080/" + props.animal.foto + ".jpg";
+  // }
+
   return (
     <div
       className="card-layout"

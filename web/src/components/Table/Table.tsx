@@ -17,6 +17,7 @@ function Table(props: TableProps) {
   const [index, setIndex] = useState<number>(1);
   const [startIndex, setStartIndex] = useState<number>(0);
   let rowsNumber = 10;
+  console.log(props.data);
   let pagesNumber = Math.floor(props.data.length / rowsNumber);
   let rowsNumberLastPage =
     rowsNumber - Math.floor(props.data.length % rowsNumber);

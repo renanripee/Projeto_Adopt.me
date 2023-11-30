@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { ChangeEvent, useEffect, useState } from "react";
 import listaAnimais from "../../views/Animal/animais.json";
 import { IAnimal, IAnimalPost } from "../../interfaces/animal";
+import { postAnimal } from "../../services/animal";
+import { putAnimal } from "../../services/animal";
+import { useAuth } from "../../context/AuthContext";
 
 import React from "react";
 
@@ -36,6 +39,8 @@ function AnimalForm(props: AnimalFormProps) {
   type AnimalErrors = {
     [campo: string]: string | undefined;
   };
+
+  const token = useAuth();
 
   const [errorMessages, setErrorMessages] = useState<AnimalErrors>({});
   const [filePost, setFilePost] = useState<File>(undefined as any);
@@ -163,25 +168,29 @@ function AnimalForm(props: AnimalFormProps) {
         }
       } else {
         animalPostData = {
-          nome: animal.nome,
-          tipo: animal.tipo,
-          raca: animal.raca,
-          descricao: animal.descricao,
-          idade: animal.idade,
-          adotado: false,
+          animal: {
+            nome: animal.nome,
+            idade: animal.idade,
+            tipo: animal.tipo,
+            raca: animal.raca,
+            descricao: animal.descricao,
+          },
         };
 
         formData.append("imagem", filePost);
         formData.append("animal", animalPostData);
 
-        //logica de post
-        console.log("Enviando dados:");
-        formData.forEach((value, key) => {
-          console.log(`${key}: ${value}`);
-        });
-        if (formData !== undefined) {
-          // window.open("/animais", "_self");
-        }
+        console.log(animalPostData);
+        console.log(filePost);
+        console.log("Imagem no FormData:", formData.get("imagem"));
+        postAnimal(formData, token.token)
+          .then((response) => {
+            console.log(response);
+            window.open("/animais", "_self");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     } else {
       setErrorMessages(newErrors);

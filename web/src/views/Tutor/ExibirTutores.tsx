@@ -1,16 +1,33 @@
 import Header from "../../components/Header/Header";
 import Table from "../../components/Table/Table";
 import "./Tutores.css";
-import items from "../../components/Table/itens.json";
+import { getTutor } from "../../services/tutor";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 const columnMapping = {
   cpf: "CPF",
   nome: "NOME",
-  rua: "RUA",
+  "endereco.rua": "RUA",
   telefone: "TELEFONE",
 };
 
 function Tutores() {
+  const [tutor, setTutor] = useState<any>([]);
+  const token = useAuth();
+
+  useEffect(() => {
+    const fetchTutor = async () => {
+      console.log(token.token);
+      const tutorData = await getTutor(String(token.token));
+      console.log(tutorData);
+      console.log(tutorData.data);
+      setTutor(tutorData.data);
+    };
+
+    fetchTutor();
+  }, [token]);
+
   return (
     <div>
       <div className="header-component">
@@ -19,7 +36,7 @@ function Tutores() {
       <div className="tutor-content">
         <Table
           columnMapping={columnMapping}
-          data={items}
+          data={tutor}
           tutor={true}
           adocao={false}
         />
