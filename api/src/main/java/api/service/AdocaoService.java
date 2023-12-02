@@ -44,11 +44,12 @@ public class AdocaoService {
 
     public void excluir(int id) throws Exception {
 
-        if(!adocaoRepository.existsById(id)){
+        if (!adocaoRepository.existsById(id)) {
             throw new Exception("Não existe uma adoção com o id fornecido!");
         }
 
-        var animal = animalRepository.findById(id).get();
+        var adocao = adocaoRepository.findById(id).get();
+        var animal = animalRepository.findById(adocao.getAnimal().getId()).get();
         animal.setAdotado(false);
         adocaoRepository.deleteById(id);
     }

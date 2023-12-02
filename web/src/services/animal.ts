@@ -24,3 +24,8 @@ export async function deleteAnimal(token: string | null, id: number) {
   const response = await api(token).delete(`/animais/${id}`);
   return response;
 }
+
+export async function getAnimalsNotAdopted(token: string | null) {
+  const response = await api(token).get("/animais/disponiveis");
+  return response;
+}

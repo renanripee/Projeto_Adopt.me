@@ -2,7 +2,6 @@ import "./TutorForm.css";
 import "../Login/LoginForm/LoginForm.css";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import listaTutores from "../Table/itens.json";
 import { ITutor } from "../../interfaces/tutor";
 import { postTutor } from "../../services/tutor";
 import { useAuth } from "../../context/AuthContext";

@@ -23,3 +23,8 @@ export async function deleteTutor(token: string | null, id: number) {
   const response = await api(token).delete(`/tutores/${id}`);
   return response;
 }
+
+export async function getTutorByCpf(token: string | null, cpf: string) {
+  const response = await api(token).get(`/tutores/cpf/${cpf}`);
+  return response;
+}

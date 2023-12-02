@@ -47,6 +47,12 @@ public class TutorController {
         return ResponseEntity.ok(new DadosDetalhamentoTutor(tutor));
     }
 
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<Object> detalharCpf(@PathVariable String cpf) {
+        var tutor = repository.findByCpf(cpf);
+        return ResponseEntity.ok(new DadosDetalhamentoTutor(tutor));
+    }
+
     @PutMapping
     @Transactional
     public ResponseEntity<Object> editar(@RequestBody @Valid DadosEdicaoTutor dados) {

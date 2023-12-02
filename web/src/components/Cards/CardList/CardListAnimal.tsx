@@ -1,10 +1,9 @@
 import Card from "../Card/Card";
 import "./CardList.css";
-import { IAnimal } from "../../../interfaces/animal";
 import { Link } from "react-router-dom";
 
 interface CardListProps {
-  animals: IAnimal[];
+  animals: any[];
   hover: string;
 }
 

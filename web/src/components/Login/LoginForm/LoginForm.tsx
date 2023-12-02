@@ -26,6 +26,7 @@ function LoginForm() {
     console.log(usuario);
     login(usuario)
       .then((response) => {
+        console.log(response);
         const token = response.data.token;
         setAuthToken(token);
         console.log(token);

@@ -71,6 +71,19 @@ function Table(props: TableProps) {
     setIsModalOpen(false);
   };
 
+  function formatCPF(value: string) {
+    if (!value) {
+      return ""; // ou outra lógica apropriada
+    }
+
+    const cleanedValue = value.replace(/\D/g, "");
+    const formattedValue = cleanedValue.replace(
+      /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
+      "$1.$2.$3-$4"
+    );
+
+    return formattedValue;
+  }
   return (
     <div className="table-content">
       <div>
@@ -100,6 +113,8 @@ function Table(props: TableProps) {
                         <td key={columnIndex}>
                           {key.includes(".")
                             ? getNestedValue(item, key)
+                            : key === "cpf"
+                            ? formatCPF(item[key])
                             : item[key]}
                         </td>
                       )

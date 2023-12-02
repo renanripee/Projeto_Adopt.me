@@ -6,9 +6,11 @@ import "../TutorForm/TutorForm.css";
 import "../Login/LoginForm/LoginForm.css";
 import { Link } from "react-router-dom";
 import adocaoList from "../../views/adocao/adocao.json";
-import animaisList from "../../views/Animal/animais.json";
 import tutorList from "../Table/itens.json";
 import ModalAdocao from "../Modals/ModalAdocao/ModalAdocao";
+import { getAnimalById } from "../../services/animal";
+import { postAdocao, putAdocao, getAdocaoById } from "../../services/adocao";
+import { getTutorByCpf } from "../../services/tutor";
 
 type AdocaoFormProps = {
   id?: number;
@@ -20,12 +22,14 @@ function AdocaoForm(props: AdocaoFormProps) {
     [campo: string]: string;
   };
 
+  const token = localStorage.getItem("token");
+
   const [errorMessages, setErrorMessages] = useState<AdocaoErrors>({});
   const [cpf, setCpf] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [adocao, setAdocao] = useState<IAdocao>({
-    id: 0,
+    id: -1,
     data: "",
     tutor: {
       id: -1,
@@ -51,31 +55,72 @@ function AdocaoForm(props: AdocaoFormProps) {
 
   useEffect(() => {
     if (props.id_animal) {
-      const itemEncontrado = animaisList.find(
-        (item) => item.id === props.id_animal
-      );
-      if (itemEncontrado) {
-        setAdocao({
-          ...adocao,
-          animal: itemEncontrado,
+      getAnimalById(token, Number(props.id_animal))
+        .then((response) => {
+          setAdocao({
+            ...adocao,
+            animal: response.data,
+          });
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
         });
-        console.log(adocao);
-        return;
-      }
     }
+    //get
     if (props.id) {
-      const itemEncontrado = adocaoList.find((item) => item.id === props.id);
-      if (itemEncontrado) {
-        setAdocao(itemEncontrado);
-      }
+      getAdocaoById(token, Number(props.id))
+        .then((response) => {
+          let aux = response.data.data[2];
+          console.log(adocao);
+          console.log(response.data.data);
+
+          if (response.data.data[2] < 10) {
+            aux = "0" + response.data.data[2];
+          }
+
+          let dataFormatada =
+            aux + String(response.data.data[1]) + String(response.data.data[0]);
+          setAdocao({
+            id: response.data.id,
+            data: String(dataFormatada),
+
+            tutor: {
+              id: response.data.tutor.id,
+              nome: response.data.tutor.nome,
+              cpf: response.data.tutor.cpf,
+              telefone: response.data.tutor.telefone,
+              numero: response.data.tutor.numero,
+              rua: response.data.tutor.rua,
+              bairro: response.data.tutor.bairro,
+              cep: response.data.tutor.cep,
+            },
+            animal: {
+              id: response.data.animal.id,
+              nome: response.data.animal.nome,
+              idade: response.data.animal.idade,
+              raca: response.data.animal.raca,
+              descricao: response.data.animal.descricao,
+              tipo: response.data.animal.tipo,
+              foto: response.data.animal.foto,
+              adotado: response.data.animal.adotado,
+            },
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  }, []);
+  }, [props.id]);
 
   function handleSubmit() {
     let newErrors: AdocaoErrors = {};
 
-    if (adocao.data.replace(/\D/g, "").length !== 8) {
-      newErrors.data = "* Peencha a data corretamente.";
+    if (
+      typeof adocao.data === "string" &&
+      adocao.data.replace(/\D/g, "").length !== 8
+    ) {
+      newErrors.data = "* Preencha a data corretamente.";
     }
 
     if (adocao.tutor.id === -1) {
@@ -95,9 +140,16 @@ function AdocaoForm(props: AdocaoFormProps) {
             id_tutor: adocao.tutor.id,
           };
           console.log("Enviando dados:", adocaoPostData);
-          // post
-          // window.open("/adocoes", "_self");
+          postAdocao(adocaoPostData, token)
+            .then((response) => {
+              console.log(response);
+              window.open("/home", "_self");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         } else {
+          adocao.data = formatData(adocao.data);
           adocaoPutData = {
             id: adocao.id,
             data: adocao.data,
@@ -105,8 +157,14 @@ function AdocaoForm(props: AdocaoFormProps) {
             id_tutor: adocao.tutor.id,
           };
           console.log("Enviando dados:", adocaoPutData);
-          // put
-          // window.open("/adocoes", "_self");
+          putAdocao(adocaoPutData, token)
+            .then((response) => {
+              console.log(response);
+              window.open("/adocoes", "_self");
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
       }
     } else {
@@ -115,36 +173,28 @@ function AdocaoForm(props: AdocaoFormProps) {
   }
 
   function handleSearch() {
-    //get tutor by cpf (e.target.value)
-    //if (tutorEncontrado) {
-    //setAdocao({ ...adocao, tutor: tutorEncontrado });
-    //} else {
-    // open modal
-    //}
-    console.log(cpf);
-
-    const itemEncontrado = tutorList.find((item) => item.cpf === cpf);
-    console.log(itemEncontrado);
-
-    if (itemEncontrado) {
-      setAdocao({
-        ...adocao,
-        tutor: {
-          id: itemEncontrado.id,
-          nome: itemEncontrado.nome,
-          cpf: itemEncontrado.cpf,
-          telefone: itemEncontrado.telefone,
-          numero: itemEncontrado.numero,
-          rua: itemEncontrado.rua,
-          bairro: itemEncontrado.bairro,
-          cep: itemEncontrado.cep,
-        },
+    getTutorByCpf(token, cpf)
+      .then((response) => {
+        const itemEncontrado = response.data;
+        setAdocao({
+          ...adocao,
+          tutor: {
+            id: itemEncontrado.id,
+            nome: itemEncontrado.nome,
+            cpf: itemEncontrado.cpf,
+            telefone: itemEncontrado.telefone,
+            numero: itemEncontrado.numero,
+            rua: itemEncontrado.rua,
+            bairro: itemEncontrado.bairro,
+            cep: itemEncontrado.cep,
+          },
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsModalOpen(true);
       });
-    } else {
-      setIsModalOpen(true);
-    }
   }
-
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -182,6 +232,10 @@ function AdocaoForm(props: AdocaoFormProps) {
   };
 
   function formatData(valor: string) {
+    if (!valor) {
+      return ""; // ou outra lógica apropriada
+    }
+    console.log(valor);
     const valorLimpo = valor.replace(/\D/g, "");
     const dataFormatada = valorLimpo.replace(
       /^(\d{2})(\d{2})(\d{4})$/,
@@ -196,7 +250,7 @@ function AdocaoForm(props: AdocaoFormProps) {
       <div className="animal-form-content">
         <div className="tutor-form-image-area">
           <img
-            src={String(adocao.animal.foto)}
+            src={`http://localhost:8080/imagens/${adocao.animal.foto}`}
             alt="Selecionado"
             className="adocao-form-image"
           />
