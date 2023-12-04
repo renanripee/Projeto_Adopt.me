@@ -50,10 +50,10 @@ function LoginForm() {
           </div>
           <form>
             <div className="input-area">
-              <label>Email</label>
+              <label>Usuario</label>
               <input
-                type="email"
-                placeholder="Email"
+                type="text"
+                placeholder="Usuario"
                 className="input-login"
                 value={usuario.usuario}
                 onChange={handleInputChange}
