@@ -60,9 +60,9 @@ Projeto_Adopt.me/
 |   |-- Diagramas/
 |   |-- Requisitos/
 |-- Padrões Adotados/
+|-- Testes/
 |-- api/
 |-- web/
-|-- testes/
 |-- README.md
 ```
 ## Regras e Padrões de uso do Git
