@@ -50,9 +50,6 @@ O sistema prevê o <b>Administrador</b> como único usuário.
 ### Banco de Dados
 - MySQL - v8.0.32
 
-### Servidor
-- Definir
-
 ## Estrutura de Diretório
 
 <a name="estrutura-diretorio"></a>
@@ -63,11 +60,9 @@ Projeto_Adopt.me/
 |   |-- Diagramas/
 |   |-- Requisitos/
 |-- Padrões Adotados/
-|-- Implementação/
-|   |-- api/
-|   |   |-- inserir
-|   |-- web/
-|   |   |-- inserir
+|-- api/
+|-- web/
+|-- testes/
 |-- README.md
 ```
 ## Regras e Padrões de uso do Git
