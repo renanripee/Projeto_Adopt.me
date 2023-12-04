@@ -18,6 +18,5 @@ public record DadosCadastroTutor(
     @Pattern(regexp = "\\d{11}")
     String cpf, 
     
-    @NotNull @Valid DadosEndereco endereco) {
-    
+    @NotNull @Valid DadosEndereco endereco) { 
 }
