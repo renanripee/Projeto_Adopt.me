@@ -24,32 +24,38 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("tutores")
 public class TutorController {
-    
+
     @Autowired
     private TutorRepository repository;
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Object> cadastrar(@RequestBody @Valid DadosCadastroTutor dados){
+    public ResponseEntity<Object> cadastrar(@RequestBody @Valid DadosCadastroTutor dados) {
         repository.save(new Tutor(dados));
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity<List<Tutor>> listar(){
+    public ResponseEntity<List<Tutor>> listar() {
         var tutores = repository.findAll();
         return ResponseEntity.ok(tutores);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Object> detalhar(@PathVariable int id){
+    public ResponseEntity<Object> detalhar(@PathVariable int id) {
         var tutor = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoTutor(tutor));
+    }
+
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<Object> detalharCpf(@PathVariable String cpf) {
+        var tutor = repository.findByCpf(cpf);
         return ResponseEntity.ok(new DadosDetalhamentoTutor(tutor));
     }
 
     @PutMapping
     @Transactional
-    public ResponseEntity<Object> editar(@RequestBody @Valid DadosEdicaoTutor dados){
+    public ResponseEntity<Object> editar(@RequestBody @Valid DadosEdicaoTutor dados) {
         var tutor = repository.getReferenceById(dados.id());
         tutor.editarDados(dados);
         return ResponseEntity.ok(new DadosDetalhamentoTutor(tutor));
@@ -57,7 +63,7 @@ public class TutorController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Object> excluir(@PathVariable int id) throws Exception{
+    public ResponseEntity<Object> excluir(@PathVariable int id) throws Exception {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

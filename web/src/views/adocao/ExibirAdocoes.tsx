@@ -1,6 +1,7 @@
 import Table from "../../components/Table/Table";
 import Header from "../../components/Header/Header";
-import adocaoList from "./adocao.json";
+import { useEffect, useState } from "react";
+import { getAdocao } from "../../services/adocao";
 
 const columnMapping = {
   id: "CÓDIGO",
@@ -10,6 +11,24 @@ const columnMapping = {
 };
 
 function ExibirAdocoes() {
+  const [adocao, setAdocao] = useState<any>([]);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchTutor = async () => {
+      getAdocao(String(token))
+        .then((response) => {
+          setAdocao(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      console.log(adocao.data);
+    };
+
+    fetchTutor();
+  }, [token]);
+
   return (
     <div>
       <div className="header-component">
@@ -18,7 +37,7 @@ function ExibirAdocoes() {
       <div className="tutor-content">
         <Table
           columnMapping={columnMapping}
-          data={adocaoList}
+          data={adocao}
           adocao={true}
           tutor={false}
         />

@@ -75,8 +75,12 @@ public class AnimalAndFileService {
     }
 
     public void excluir(Animal animal) throws IOException {
-        excluirImagem(animal.getFoto());
-        repository.deleteById(animal.getId());
-    }
 
+        if (animal.isAdotado()) {
+            throw new IOException("O animal não pode ser excluído");
+        }
+
+        repository.deleteById(animal.getId());
+        excluirImagem(animal.getFoto());
+    }
 }

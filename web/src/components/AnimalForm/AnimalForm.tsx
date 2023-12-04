@@ -5,6 +5,13 @@ import { Link } from "react-router-dom";
 import { ChangeEvent, useEffect, useState } from "react";
 import listaAnimais from "../../views/Animal/animais.json";
 import { IAnimal, IAnimalPost } from "../../interfaces/animal";
+import {
+  postAnimal,
+  putAnimal,
+  getAnimalById,
+  deleteAnimal,
+} from "../../services/animal";
+import { useAuth } from "../../context/AuthContext";
 
 import React from "react";
 
@@ -37,10 +44,12 @@ function AnimalForm(props: AnimalFormProps) {
     [campo: string]: string | undefined;
   };
 
+  const token = useAuth();
+
   const [errorMessages, setErrorMessages] = useState<AnimalErrors>({});
   const [filePost, setFilePost] = useState<File>(undefined as any);
   const [selectedImage, setSelectedImage] = useState<string>("");
-  const [isImageSelected, setIsImageSelected] = useState(false);
+  const [isImageSelected, setIsImageSelected] = useState<boolean>(false);
 
   const fileInputRef = React.createRef<HTMLInputElement>();
 
@@ -56,47 +65,39 @@ function AnimalForm(props: AnimalFormProps) {
 
     if (file) {
       setFilePost(file);
-      setIsImageSelected(true);
       const reader = new FileReader();
 
       reader.onloadend = () => {
         setSelectedImage(reader.result as string);
       };
-
+      setIsImageSelected(true);
       reader.readAsDataURL(file);
     }
   };
 
   useEffect(() => {
-    //get animal
-    const itemEncontrado = listaAnimais.find((item) => item.id === props.id);
-    if (itemEncontrado) {
-      setAnimal(itemEncontrado);
-      // if (animal.foto) {
-      //   //get imagem do back
-      //   //   setFilePost(file);
-      //   //   const reader = new FileReader();
-      //   //   reader.onloadend = () => {
-      //   //     setSelectedImage(reader.result as string);
-      //   //   };
-      //   //   reader.readAsDataURL(file);
-      // }
-    }
+    getAnimalById(token.token, Number(props.id))
+      .then((response) => {
+        setAnimal(response.data);
+        setIsImageSelected(true);
+        console.log(isImageSelected);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [props.id]);
 
-  //provisorio, mudar na imagem la em baixo tambem
-  let animalFoto;
-  if (animal.foto) {
-    animalFoto = String(animal.foto);
-  }
-
   function handleDelete(id: number) {
-    //deleteAnimal(id).then(() =>
-    //logica de delete
-    //window.open("/animais", "_self"));
-    //.catch((err) => console.log(err));
-    window.open("/animais", "_self");
-    console.log(id);
+    deleteAnimal(token.token, id)
+      .then((response) => {
+        console.log(response);
+        window.open("/animais", "_self");
+      })
+      .catch((error) => {
+        alert("Não é possível apagar um animal adotado.");
+        console.log(error);
+      });
   }
 
   function handleSubmit() {
@@ -141,47 +142,55 @@ function AnimalForm(props: AnimalFormProps) {
 
       if (props.id) {
         animalPutData = {
-          id: animal.id,
+          id: Number(animal.id),
           nome: animal.nome,
+          idade: Number(animal.idade),
           tipo: animal.tipo,
           raca: animal.raca,
           descricao: animal.descricao,
-          idade: animal.idade,
-          adotado: false,
         };
 
-        formData.append("imagem", filePost);
-        formData.append("animal", animalPutData);
-
-        //logica de put
-        console.log("Enviando dados:");
-        formData.forEach((value, key) => {
-          console.log(`${key}: ${value}`);
-        });
-        if (formData !== undefined) {
-          // window.open("/animais", "_self");
-        }
+        putAnimal(animalPutData, token.token)
+          .then((response) => {
+            console.log(response);
+            setTimeout(() => {
+              window.open("/animais", "_self");
+            }, 500);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       } else {
         animalPostData = {
           nome: animal.nome,
+          idade: Number(animal.idade),
           tipo: animal.tipo,
           raca: animal.raca,
           descricao: animal.descricao,
-          idade: animal.idade,
-          adotado: false,
         };
 
-        formData.append("imagem", filePost);
-        formData.append("animal", animalPostData);
-
-        //logica de post
-        console.log("Enviando dados:");
-        formData.forEach((value, key) => {
-          console.log(`${key}: ${value}`);
+        const json = JSON.stringify(animalPostData);
+        const blob = new Blob([json], {
+          type: "application/json",
         });
-        if (formData !== undefined) {
-          // window.open("/animais", "_self");
-        }
+
+        formData.append("animal", blob);
+        formData.append("imagem", filePost);
+
+        console.log(animalPostData);
+        console.log(filePost);
+        console.log("Imagem no FormData:", formData.get("imagem"));
+
+        postAnimal(formData, token.token)
+          .then((response) => {
+            console.log(response);
+            setTimeout(() => {
+              window.open("/animais", "_self");
+            }, 500);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     } else {
       setErrorMessages(newErrors);
@@ -227,7 +236,7 @@ function AnimalForm(props: AnimalFormProps) {
             />
           ) : !selectedImage && animal.foto ? (
             <img
-              src={animalFoto}
+              src={`http://localhost:8080/imagens/${animal.foto}`}
               alt="hover"
               className="animal-form-image"
               style={{ cursor: "pointer" }}
@@ -241,12 +250,14 @@ function AnimalForm(props: AnimalFormProps) {
             />
           )}
         </label>
-        <input
-          type="file"
-          style={{ display: "none" }}
-          ref={fileInputRef}
-          onChange={handleImageChange}
-        ></input>
+        {!props.id ? (
+          <input
+            type="file"
+            style={{ display: "none" }}
+            ref={fileInputRef}
+            onChange={handleImageChange}
+          ></input>
+        ) : null}
         {errorMessages.foto && (
           <div className="error-container">
             <p className="error-message">{errorMessages.foto}</p>

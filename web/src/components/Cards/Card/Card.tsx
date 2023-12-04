@@ -1,18 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Card.css";
-import { IAnimal } from "../../../interfaces/animal";
+import animall from "../../../assets/killua.jpg";
 
 type CardProps = {
-  animal: IAnimal;
+  animal: any;
   hover: string;
 };
 
 function Card(props: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
-
-  function getImage() {
-    return props.animal.foto;
-  }
 
   return (
     <div
@@ -26,7 +22,10 @@ function Card(props: CardProps) {
         ) : null}
       </div>
       <div className="card-image">
-        <img src={String(getImage())} alt="imagem" />
+        <img
+          src={`http://localhost:8080/imagens/${props.animal.foto}`}
+          alt="imagem"
+        />
       </div>
       <div className="card-discription">
         {!isHovered ? (

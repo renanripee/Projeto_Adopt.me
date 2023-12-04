@@ -1,9 +1,12 @@
 import "./TutorForm.css";
-import "../Login/LoginButton/LoginButton.css";
+import "../Login/LoginForm/LoginForm.css";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import listaTutores from "../Table/itens.json";
 import { ITutor } from "../../interfaces/tutor";
+import { postTutor } from "../../services/tutor";
+import { useAuth } from "../../context/AuthContext";
+import { getTutorById } from "../../services/tutor";
+import { putTutor } from "../../services/tutor";
 
 type TutorFormProps = {
   id?: number;
@@ -20,15 +23,17 @@ const camposObrigatorios: Array<keyof ITutor> = [
 ];
 
 function TutorForm(props: TutorFormProps) {
-  const [tutor, setTutor] = useState<ITutor>({
+  const [tutor, setTutor] = useState<any>({
     id: 0,
     cpf: "",
     nome: "",
     telefone: "",
-    cep: "",
-    rua: "",
-    bairro: "",
-    numero: "",
+    endereco: {
+      cep: "",
+      rua: "",
+      bairro: "",
+      numero: "",
+    },
   });
 
   type TutorErrors = {
@@ -37,14 +42,21 @@ function TutorForm(props: TutorFormProps) {
 
   const [errorMessages, setErrorMessages] = useState<TutorErrors>({});
 
-  useEffect(() => {
-    //get tutor by id
-    const itemEncontrado = listaTutores.find((item) => item.id === props.id);
-    if (itemEncontrado) {
-      setTutor(itemEncontrado);
-    }
-  }, [props.id]);
+  const token = useAuth();
 
+  useEffect(() => {
+    const fetchTutor = async () => {
+      try {
+        const tutorData = await getTutorById(token.token, Number(props.id));
+        console.log(tutorData.data);
+        setTutor(tutorData.data);
+      } catch (error) {
+        console.error("Erro ao obter dados do tutor:", error);
+      }
+    };
+
+    fetchTutor();
+  }, [props.id, token.token]);
   function handleSubmit() {
     const newErrors: TutorErrors = {};
 
@@ -62,41 +74,75 @@ function TutorForm(props: TutorFormProps) {
       newErrors.telefone = "* Telefone deve conter 11 dígitos.";
     }
 
-    if (tutor.cep.replace(/\D/g, "").length !== 8) {
+    if (tutor.endereco.cep.replace(/\D/g, "").length !== 8) {
       newErrors.cep = "* CEP deve conter 8 dígitos.";
+    }
+
+    if (tutor.endereco.cep === "") {
+      newErrors.cep = "* CEP deve conter 8 dígitos.";
+    }
+    if (tutor.endereco.rua === "") {
+      newErrors.rua = "*  Campo obrigatório.";
+    }
+    if (tutor.endereco.bairro === "") {
+      newErrors.bairro = "*  Campo obrigatório.";
+    }
+    if (tutor.endereco.numero === "") {
+      newErrors.numero = "* ";
     }
 
     if (Object.values(newErrors).every((value) => value === undefined)) {
       let tutorPostData: any;
-      let tutorPutData: ITutor;
+      let tutorPutData: any;
       tutor.telefone = formatPhone(tutor.telefone);
+      tutor.cpf = unformatCPF(tutor.cpf);
+
       if (!props.id) {
         tutorPostData = {
           nome: tutor.nome,
           cpf: tutor.cpf,
           telefone: tutor.telefone,
-          cep: tutor.cep,
-          rua: tutor.rua,
-          bairro: tutor.bairro,
-          numero: tutor.numero,
+          endereco: {
+            cep: tutor.endereco.cep,
+            rua: tutor.endereco.rua,
+            bairro: tutor.endereco.bairro,
+            numero: tutor.endereco.numero,
+          },
         };
+        console.log(token.token);
         console.log("Enviando dados:", tutorPostData);
-        //requisicao com tutorPostData
-        // window.open("/tutores", "_self");
+        postTutor(tutorPostData, String(token.token))
+          .then((response) => {
+            console.log(response);
+            window.open("/tutores", "_self");
+          })
+          .catch((error) => {
+            alert(error.response.data);
+          });
       } else {
         tutorPutData = {
           id: tutor.id,
           nome: tutor.nome,
           cpf: tutor.cpf,
           telefone: tutor.telefone,
-          cep: tutor.cep,
-          rua: tutor.rua,
-          bairro: tutor.bairro,
-          numero: tutor.numero,
+          endereco: {
+            cep: tutor.endereco.cep,
+            rua: tutor.endereco.rua,
+            bairro: tutor.endereco.bairro,
+            numero: tutor.endereco.numero,
+          },
         };
+        console.log(token.token);
         console.log("Enviando dados:", tutorPutData);
-        //requsicao com tutor
-        // window.open("/tutores", "_self");
+        putTutor(tutorPutData, String(token.token))
+          .then((response) => {
+            console.log(response);
+            window.open("/tutores", "_self");
+          })
+          .catch((error) => {
+            console.log(error);
+            alert(error.response.data);
+          });
       }
     } else {
       setErrorMessages(newErrors);
@@ -104,6 +150,10 @@ function TutorForm(props: TutorFormProps) {
   }
 
   function formatCPF(value: string) {
+    if (!tutor || !tutor.cpf) {
+      return ""; // ou outra lógica apropriada
+    }
+
     const cleanedValue = value.replace(/\D/g, "");
     const formattedValue = cleanedValue.replace(
       /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
@@ -113,7 +163,21 @@ function TutorForm(props: TutorFormProps) {
     return formattedValue;
   }
 
+  function unformatCPF(formattedValue: string): string {
+    const cleanedValue = formattedValue.replace(/\D/g, "");
+    const unformattedValue = cleanedValue.replace(
+      /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
+      "$1$2$3$4"
+    );
+
+    return unformattedValue;
+  }
+
   const formatPhone = (value: string) => {
+    if (!tutor || !tutor.cpf) {
+      return ""; // ou outra lógica apropriada
+    }
+
     const cleanedValue = value.replace(/\D/g, "");
 
     const formattedValue = cleanedValue.replace(
@@ -126,10 +190,26 @@ function TutorForm(props: TutorFormProps) {
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setTutor((prevTutor) => ({
-      ...prevTutor,
-      [name]: value,
-    }));
+
+    const nameParts = name.split(".");
+
+    setTutor((prevTutor: any) => {
+      if (nameParts.length === 1) {
+        return {
+          ...prevTutor,
+          [name]: value,
+        };
+      } else {
+        const [outerKey, innerKey] = nameParts;
+        return {
+          ...prevTutor,
+          [outerKey]: {
+            ...prevTutor[outerKey],
+            [innerKey]: value,
+          },
+        };
+      }
+    });
   };
 
   return (
@@ -201,9 +281,9 @@ function TutorForm(props: TutorFormProps) {
                   className={`input-tutor-form ${
                     errorMessages.cep ? "error" : ""
                   }`}
-                  value={tutor.cep}
+                  value={tutor.endereco.cep}
                   onChange={handleInputChange}
-                  name="cep"
+                  name="endereco.cep"
                   minLength={8}
                   maxLength={8}
                 />
@@ -218,9 +298,9 @@ function TutorForm(props: TutorFormProps) {
                   className={`input-tutor-form ${
                     errorMessages.rua ? "error" : ""
                   }`}
-                  value={tutor.rua}
+                  value={tutor.endereco.rua}
                   onChange={handleInputChange}
-                  name="rua"
+                  name="endereco.rua"
                 />
                 {errorMessages.rua && (
                   <p className="error-message">{errorMessages.rua}</p>
@@ -235,9 +315,9 @@ function TutorForm(props: TutorFormProps) {
                   className={`input-tutor-form ${
                     errorMessages.bairro ? "error" : ""
                   }`}
-                  value={tutor.bairro}
+                  value={tutor.endereco.bairro}
                   onChange={handleInputChange}
-                  name="bairro"
+                  name="endereco.bairro"
                 />
                 {errorMessages.bairro && (
                   <p className="error-message">{errorMessages.bairro}</p>
@@ -250,9 +330,9 @@ function TutorForm(props: TutorFormProps) {
                   className={`input-tutor-form  ${
                     errorMessages.numero ? "error" : ""
                   }`}
-                  value={tutor.numero}
+                  value={tutor.endereco.numero}
                   onChange={handleInputChange}
-                  name="numero"
+                  name="endereco.numero"
                 />
                 {errorMessages.numero && <p className="error-message">*</p>}
               </div>

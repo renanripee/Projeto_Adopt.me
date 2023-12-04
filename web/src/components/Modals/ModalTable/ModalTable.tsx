@@ -1,5 +1,8 @@
 import { FC, MouseEvent } from "react";
 import "./ModalTable.css";
+import { deleteTutor } from "../../../services/tutor";
+import { deleteAdocao } from "../../../services/adocao";
+import { useAuth } from "../../../context/AuthContext";
 
 interface ModalProps {
   isOpen: boolean;
@@ -10,18 +13,34 @@ interface ModalProps {
 }
 
 const ModalTable: FC<ModalProps> = ({ isOpen, onClose, id, tutor, adocao }) => {
+  const token = useAuth();
   const handleCancel = () => {
     onClose();
   };
 
   const handleConfirmAction = () => {
     if (adocao) {
-      //metodo delete
-      console.log("adocao" + id);
+      deleteAdocao(String(token.token), id)
+        .then((response) => {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
     }
     if (tutor) {
-      //metodo delete
-      console.log("tutor" + id);
+      deleteTutor(String(token.token), id)
+        .then((response) => {
+          console.log(response);
+          window.location.reload();
+        })
+        .catch((error) => {
+          alert(
+            "Nao é possivel excluir um tutor que tenha adoções cadastradas."
+          );
+          console.log(error.response.data);
+        });
     }
     onClose();
   };

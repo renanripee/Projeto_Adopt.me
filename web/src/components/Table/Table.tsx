@@ -17,6 +17,7 @@ function Table(props: TableProps) {
   const [index, setIndex] = useState<number>(1);
   const [startIndex, setStartIndex] = useState<number>(0);
   let rowsNumber = 10;
+  console.log(props.data);
   let pagesNumber = Math.floor(props.data.length / rowsNumber);
   let rowsNumberLastPage =
     rowsNumber - Math.floor(props.data.length % rowsNumber);
@@ -70,6 +71,19 @@ function Table(props: TableProps) {
     setIsModalOpen(false);
   };
 
+  function formatCPF(value: string) {
+    if (!value) {
+      return ""; // ou outra lógica apropriada
+    }
+
+    const cleanedValue = value.replace(/\D/g, "");
+    const formattedValue = cleanedValue.replace(
+      /^(\d{3})(\d{3})(\d{3})(\d{2})$/,
+      "$1.$2.$3-$4"
+    );
+
+    return formattedValue;
+  }
   return (
     <div className="table-content">
       <div>
@@ -99,6 +113,8 @@ function Table(props: TableProps) {
                         <td key={columnIndex}>
                           {key.includes(".")
                             ? getNestedValue(item, key)
+                            : key === "cpf"
+                            ? formatCPF(item[key])
                             : item[key]}
                         </td>
                       )

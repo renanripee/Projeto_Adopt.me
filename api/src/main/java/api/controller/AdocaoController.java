@@ -38,8 +38,8 @@ public class AdocaoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<DadosCadastroAdocao>> listar() {
-        var adocoes = repository.findAll().stream().map(DadosCadastroAdocao::new).toList();
+    public ResponseEntity<List<DadosDetalhamentoAdocao>> listar() {
+        var adocoes = repository.findAll().stream().map(DadosDetalhamentoAdocao::new).toList();
         return ResponseEntity.ok(adocoes);
     }
 
@@ -59,7 +59,7 @@ public class AdocaoController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Object> excluir(@PathVariable int id) throws Exception{
+    public ResponseEntity<Object> excluir(@PathVariable int id) throws Exception {
         service.excluir(id);
         return ResponseEntity.noContent().build();
     }

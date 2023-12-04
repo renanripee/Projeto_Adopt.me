@@ -29,3 +29,14 @@ export interface IAnimalPut {
   foto: File | undefined;
   adotado: boolean;
 }
+
+export interface IAnimalGet {
+  id: number;
+  nome: string;
+  idade: number;
+  tipo: string;
+  raca: string;
+  descricao: string;
+  foto: string;
+  adotado: boolean;
+}
