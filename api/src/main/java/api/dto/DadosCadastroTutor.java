@@ -19,4 +19,5 @@ public record DadosCadastroTutor(
     String cpf, 
     
     @NotNull @Valid DadosEndereco endereco) { 
+    
 }
